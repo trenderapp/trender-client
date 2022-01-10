@@ -1,18 +1,25 @@
 import type { myInformations } from './Managers/Interfaces/Me';
-import EventEmitter from './utils/EventEmitter';
+import UserManager from './Managers/UserManager';
+import RequestEmitter from './utils/RequestEmitter';
 
-class Client extends EventEmitter {
- 
+class Client extends RequestEmitter {
+    
+    public user: UserManager;
+
     constructor(token: string) {
         super(token);
+    
+        this.user = new UserManager(token);
     }
 
     public async informations() {
         const request = await this.getRequest("/users/me/informations");
+
         const response = request as myInformations;
 
-        return response.data;
+        return response;
     }
+
 }
   
   export default Client;

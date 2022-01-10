@@ -1,16 +1,17 @@
 import axios, { AxiosInstance } from 'axios';
 
-const baseapiurl = 'https://api.trenderapp.com/api';
+const baseapiurl = 'http://localhost:4000/api';
 
-class EventEmitter {
+class RequestEmitter {
   private instance: AxiosInstance;
 
   constructor(token: string) {
     this.instance = axios.create({
       baseURL: baseapiurl,
       headers: {
-        trenderapikey: token ?? null
-      }
+        "trendertokenapi": token ?? null
+      },
+      validateStatus: (s) => s < 501
     });
   }
 
@@ -21,8 +22,7 @@ class EventEmitter {
       data: data
     });
 
-    if (request.status !== 200) throw request;
-    else return request.data;
+    return request.data;
   }
 
   protected async patchRequest(url: string, data: object) {
@@ -31,9 +31,8 @@ class EventEmitter {
       url: url,
       data: data
     });
-
-    if (request.status !== 200) throw request;
-    else return request.data;
+    
+    return request.data;
   }
 
   protected async getRequest(url: string) {
@@ -42,8 +41,7 @@ class EventEmitter {
       url: url
     });
 
-    if (request.status !== 200) throw request;
-    else return request.data;
+    return request.data;
   }
 
   protected async deleteRequest(url: string) {
@@ -52,9 +50,9 @@ class EventEmitter {
       url: url
     });
 
-    if (request.status !== 204) throw request;
+    if (request.status !== 204) return false;
     else return true;
   }
 }
 
-export default EventEmitter;
+export default RequestEmitter;
