@@ -1,16 +1,17 @@
 import UserPermissions from "../Permissions/UserPermissions";
 import { cdnsiteurl } from "../utils/Constante";
 import EventEmitter from "../utils/RequestEmitter";
+import type { editInformationsParams } from "./Interfaces/Me";
 import type { profileInformations } from "./Interfaces/User";
 
 class UserManager extends EventEmitter {
 
-    public permissions: UserPermissions;
-
     constructor(token: string) {
         super(token);
+    }
 
-        this.permissions = new UserPermissions();
+    public flags(bits?: string) {
+        return new UserPermissions(bits);
     }
 
     public avatar(user_id: string, avatar: string) {
@@ -28,6 +29,13 @@ class UserManager extends EventEmitter {
         const response = request as profileInformations;
 
         return response;
+    }
+
+    /**
+     * Update your account
+     */
+    public async edit(options: editInformationsParams) {
+        return options;
     }
 }
 

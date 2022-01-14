@@ -7,6 +7,7 @@ export type userInfo = {
     description: string,
     avatar: string,
     banner: string,
+    link?: string,
     accent_color: string,
     flags: number,
     is_private: boolean,

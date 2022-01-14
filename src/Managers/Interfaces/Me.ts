@@ -11,3 +11,12 @@ export type myInformations = {
         locale: LANGUAGES_LIST
     }
 }
+
+export type editInformationsParams = {
+    nickname: string,
+    username: string,
+    description: string,
+    is_private: boolean,
+    avatar?: File,
+    banner?: File
+}

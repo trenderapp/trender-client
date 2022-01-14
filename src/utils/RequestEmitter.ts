@@ -1,6 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-
-const baseapiurl = 'http://localhost:4000/api';
+import { baseapiurl } from './Constante';
 
 class RequestEmitter {
   private instance: AxiosInstance;

@@ -1,6 +1,9 @@
 import type { myInformations } from './Managers/Interfaces/Me';
 import UserManager from './Managers/UserManager';
+import UserFlags from './Permissions/Flags';
 import RequestEmitter from './utils/RequestEmitter';
+
+export const userFlags = UserFlags;
 
 class Client extends RequestEmitter {
     
@@ -8,7 +11,7 @@ class Client extends RequestEmitter {
 
     constructor(token: string) {
         super(token);
-    
+
         this.user = new UserManager(token);
     }
 
