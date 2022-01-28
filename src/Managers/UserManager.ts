@@ -1,42 +1,56 @@
-import UserPermissions from "../Permissions/UserPermissions";
-import { cdnsiteurl } from "../utils/Constante";
-import EventEmitter from "../utils/RequestEmitter";
-import type { editInformationsParams } from "./Interfaces/Me";
-import type { profileInformations } from "./Interfaces/User";
+import UserPermissions from '../Permissions/UserPermissions';
+import { cdnsiteurl } from '../utils/Constante';
+import EventEmitter from '../utils/RequestEmitter';
+import BlockManager from './BlockManager';
+import type { emptyResponse } from './Interfaces/Global';
+import type { editInformationsParams } from './Interfaces/Me';
+import type { profileInformations } from './Interfaces/User';
 
 class UserManager extends EventEmitter {
+    public block: BlockManager;
 
     constructor(token: string) {
-        super(token);
-    }
+    super(token);
 
-    public flags(bits?: string) {
-        return new UserPermissions(bits);
-    }
+    this.block = new BlockManager(token);
+  }
 
-    public avatar(user_id: string, avatar: string) {
-        if(avatar === "base_1.png" || avatar === "base_2.png") return `${cdnsiteurl}/avatars/${avatar}`;
-        return `${cdnsiteurl}/avatars/${user_id}/${avatar}`;
-    }
+  public flags(bits?: string) {
+    return new UserPermissions(bits);
+  }
 
-    public banner(user_id: string, banner: string) {
-        return `${cdnsiteurl}/banners/${user_id}/${banner}`;
-    }
+  public avatar(user_id: string, avatar: string) {
+    if (avatar === 'base_1.png' || avatar === 'base_2.png') return `${cdnsiteurl}/avatars/${avatar}`;
+    return `${cdnsiteurl}/avatars/${user_id}/${avatar}`;
+  }
 
-    public async profile(nickname: string) {
-        const request = await this.getRequest(`/users/${nickname}`);
+  public banner(user_id: string, banner: string) {
+    return `${cdnsiteurl}/banners/${user_id}/${banner}`;
+  }
 
-        const response = request as profileInformations;
+  public async profile(nickname: string) {
+    const request = await this.getRequest(`/users/${nickname}`);
 
-        return response;
-    }
+    const response = request as profileInformations;
+    return response;
+  }
 
-    /**
-     * Update your account
-     */
-    public async edit(options: editInformationsParams) {
-        return options;
-    }
+  public async report(target_id: string, reason: number, description?: string) {
+    const request = await this.postRequest(`/users/${target_id}/report`, {
+        reason: reason,
+        description: description
+    });
+
+    const response = request as emptyResponse;
+    return response;
+  }
+
+  /**
+   * Update your account
+   */
+  public async edit(options: editInformationsParams) {
+    return options;
+  }
 }
 
 export default UserManager;

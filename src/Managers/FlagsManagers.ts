@@ -1,12 +1,11 @@
-import UserFlags from "../Permissions/Flags";
+import UserFlags from '../Permissions/Flags';
 
 class FlagsManagers {
+  public user: object;
 
-    public user: object
-
-    constructor() {
-        this.user = UserFlags;
-    }
+  constructor() {
+    this.user = UserFlags;
+  }
 }
 
 export default FlagsManagers;

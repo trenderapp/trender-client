@@ -1,5 +1,5 @@
-import BitField from "./BitFields";
-import UserFlags from "./Flags";
+import BitField from './BitFields';
+import UserFlags from './Flags';
 
 /**
  * Data structure that makes it easy to interact with a {@link User#flags} bitfield.

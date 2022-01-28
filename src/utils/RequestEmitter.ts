@@ -8,9 +8,9 @@ class RequestEmitter {
     this.instance = axios.create({
       baseURL: baseapiurl,
       headers: {
-        "trendertokenapi": token ?? null
+        trendertokenapi: token ?? null
       },
-      validateStatus: (s) => s < 501
+      validateStatus: s => s < 501
     });
   }
 
@@ -30,7 +30,17 @@ class RequestEmitter {
       url: url,
       data: data
     });
-    
+
+    return request.data;
+  }
+
+  protected async putRequest(url: string, data: object) {
+    const request = await this.instance({
+      method: 'PUT',
+      url: url,
+      data: data
+    });
+
     return request.data;
   }
 
@@ -49,8 +59,7 @@ class RequestEmitter {
       url: url
     });
 
-    if (request.status !== 204) return false;
-    else return true;
+    return request.data;
   }
 }
 
