@@ -2,16 +2,20 @@ import UserPermissions from '../Permissions/UserPermissions';
 import { cdnsiteurl } from '../utils/Constante';
 import EventEmitter from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
+import FollowManager from './FollowManager';
 import type { emptyResponse } from './Interfaces/Global';
 import type { editInformationsParams } from './Interfaces/Me';
+import type { searchUsers, searchUsersParams } from './Interfaces/Search';
 import type { profileInformations } from './Interfaces/User';
 
 class UserManager extends EventEmitter {
     public block: BlockManager;
+    public follow: FollowManager;
 
     constructor(token: string) {
     super(token);
 
+    this.follow = new FollowManager(token);
     this.block = new BlockManager(token);
   }
 
@@ -42,6 +46,13 @@ class UserManager extends EventEmitter {
     });
 
     const response = request as emptyResponse;
+    return response;
+  }
+
+  public async search(params: searchUsersParams) {
+    const request = await this.getRequest(`/users/search/all?query=${params.query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 25}`);
+    const response = request as searchUsers;
+
     return response;
   }
 

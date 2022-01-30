@@ -1,5 +1,5 @@
 import EventEmitter from '../utils/RequestEmitter';
-import type { followInformations } from './Interfaces/Follow';
+import type { followInformations, followListInformations } from './Interfaces/Follow';
 
 class FollowManager extends EventEmitter {
   constructor(token: string) {
@@ -26,6 +26,14 @@ class FollowManager extends EventEmitter {
     });
     
     const response = request as followInformations;
+
+    return response;
+  }
+
+  public async unacceptedList() {
+    const request = await this.getRequest("/users/me/follows");
+
+    const response = request as followListInformations;
 
     return response;
   }
