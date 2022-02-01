@@ -7,10 +7,11 @@ export type followInformations = {
 export type followListInformations = {
     error?: error,
     data?: Array<{
-        follow_id: string, 
+        follow_id?: string, 
         user_id: string, 
         target_id: string, 
-        created_at: Date, 
+        created_at: Date,
+        description?: string,
         accepted: boolean, 
         nickname: string, 
         username: string, 

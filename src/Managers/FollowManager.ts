@@ -1,5 +1,6 @@
 import EventEmitter from '../utils/RequestEmitter';
 import type { followInformations, followListInformations } from './Interfaces/Follow';
+import type { paginationParams } from './Interfaces/Global';
 
 class FollowManager extends EventEmitter {
   constructor(token: string) {
@@ -32,6 +33,22 @@ class FollowManager extends EventEmitter {
 
   public async unacceptedList() {
     const request = await this.getRequest("/users/me/follows");
+
+    const response = request as followListInformations;
+
+    return response;
+  }
+
+  public async follows(nickname: string, options: paginationParams) {
+    const request = await this.getRequest(`/users/${nickname}/follows?skip=${options?.skip}&limit=${options?.limit}`);
+
+    const response = request as followListInformations;
+
+    return response;
+  }
+
+  public async followers(nickname: string, options: paginationParams) {
+    const request = await this.getRequest(`/users/${nickname}/followers?skip=${options?.skip}&limit=${options?.limit}`);
 
     const response = request as followListInformations;
 

@@ -24,12 +24,12 @@ class UserManager extends EventEmitter {
   }
 
   public avatar(user_id: string, avatar: string) {
-    if (avatar === 'base_1.png' || avatar === 'base_2.png') return `${cdnsiteurl}/avatars/${avatar}`;
-    return `${cdnsiteurl}/avatars/${user_id}/${avatar}`;
+    if (avatar === 'base_1.png' || avatar === 'base_2.png') return `${cdnsiteurl}/profile_avatars/${avatar}`;
+    return `${cdnsiteurl}/profile_avatars/${user_id}/${avatar}`;
   }
 
   public banner(user_id: string, banner: string) {
-    return `${cdnsiteurl}/banners/${user_id}/${banner}`;
+    return `${cdnsiteurl}/profile_banners/${user_id}/${banner}`;
   }
 
   public async profile(nickname: string) {
