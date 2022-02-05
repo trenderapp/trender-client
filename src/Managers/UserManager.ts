@@ -32,6 +32,9 @@ class UserManager extends EventEmitter {
     return `${cdnsiteurl}/profile_banners/${user_id}/${banner}`;
   }
 
+  public badge(flag_name: string) {
+    return `${cdnsiteurl}/assets/badges/${flag_name}.png`;
+  }
   public async profile(nickname: string) {
     const request = await this.getRequest(`/users/${nickname}`);
 
@@ -49,8 +52,8 @@ class UserManager extends EventEmitter {
     return response;
   }
 
-  public async search(params: searchUsersParams) {
-    const request = await this.getRequest(`/users/search/all?query=${params.query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 25}`);
+  public async search(query: string, params?: searchUsersParams) {
+    const request = await this.getRequest(`/users/search/all?query=${query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 30}`);
     const response = request as searchUsers;
 
     return response;

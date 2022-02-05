@@ -39,16 +39,16 @@ class FollowManager extends EventEmitter {
     return response;
   }
 
-  public async follows(nickname: string, options: paginationParams) {
-    const request = await this.getRequest(`/users/${nickname}/follows?skip=${options?.skip}&limit=${options?.limit}`);
+  public async follows(nickname: string, options?: paginationParams) {
+    const request = await this.getRequest(`/users/${nickname}/follows?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
     const response = request as followListInformations;
 
     return response;
   }
 
-  public async followers(nickname: string, options: paginationParams) {
-    const request = await this.getRequest(`/users/${nickname}/followers?skip=${options?.skip}&limit=${options?.limit}`);
+  public async followers(nickname: string, options?: paginationParams) {
+    const request = await this.getRequest(`/users/${nickname}/followers?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
     const response = request as followListInformations;
 
