@@ -12,11 +12,25 @@ export type myInformations = {
     }
 }
 
-export type editInformationsParams = {
+export interface editInformationsParams {
     nickname: string,
     username: string,
     description: string,
     is_private: boolean,
-    avatar?: File,
-    banner?: File
+    link?: string,
+    avatar?: string | Blob,
+    banner?: string | Blob
+}
+
+export type editInformationsResponse = {
+    error?: error,
+    data?: {
+        is_private: boolean,
+        description: string,
+        nickname: string,
+        username: string,
+        avatar?: string,
+        accent_color?: string,
+        banner?: string
+    }
 }

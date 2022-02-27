@@ -1,8 +1,8 @@
-import EventEmitter from '../utils/RequestEmitter';
+import RequestEmitter from '../utils/RequestEmitter';
 import type { followInformations, followListInformations } from './Interfaces/Follow';
 import type { paginationParams } from './Interfaces/Global';
 
-class FollowManager extends EventEmitter {
+class FollowManager extends RequestEmitter {
   constructor(token: string) {
     super(token);
   }

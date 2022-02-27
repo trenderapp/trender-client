@@ -1,14 +1,14 @@
 import UserPermissions from '../Permissions/UserPermissions';
 import { cdnsiteurl } from '../utils/Constante';
-import EventEmitter from '../utils/RequestEmitter';
+import RequestEmitter from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
 import FollowManager from './FollowManager';
 import type { emptyResponse } from './Interfaces/Global';
-import type { editInformationsParams } from './Interfaces/Me';
+import type { editInformationsParams, editInformationsResponse } from './Interfaces/Me';
 import type { searchUsers, searchUsersParams } from './Interfaces/Search';
 import type { profileInformations } from './Interfaces/User';
 
-class UserManager extends EventEmitter {
+class UserManager extends RequestEmitter {
     public block: BlockManager;
     public follow: FollowManager;
 
@@ -35,6 +35,7 @@ class UserManager extends EventEmitter {
   public badge(flag_name: string) {
     return `${cdnsiteurl}/assets/badges/${flag_name}.png`;
   }
+  
   public async profile(nickname: string) {
     const request = await this.getRequest(`/users/${nickname}`);
 
@@ -63,7 +64,26 @@ class UserManager extends EventEmitter {
    * Update your account
    */
   public async edit(options: editInformationsParams) {
-    return options;
+    
+    const formdata = new FormData();
+
+    formdata.append("avatar", options?.avatar ? options.avatar : "false")
+    formdata.append("banner", options?.banner ? options.banner : "false")
+    formdata.append("is_private", options.is_private.toString())
+    formdata.append("description", options.description)
+    formdata.append("link", options?.link ?? "")
+    formdata.append("nickname", options.nickname)
+    formdata.append("username", options.username)
+
+    const request = await this.patchRequest(`/users/me`, formdata, {
+      headers: {
+      'content-type': 'multipart/form-data'
+      }
+    })
+
+    const response = request as editInformationsResponse;
+
+    return response;
   }
 }
 

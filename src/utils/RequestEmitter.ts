@@ -1,10 +1,13 @@
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import Events from 'events';
 import { baseapiurl } from './Constante';
 
-class RequestEmitter {
+class RequestEmitter extends Events {
   private instance: AxiosInstance;
 
   constructor(token: string) {
+    super();
+
     this.instance = axios.create({
       baseURL: baseapiurl,
       headers: {
@@ -24,11 +27,25 @@ class RequestEmitter {
     return request.data;
   }
 
-  protected async patchRequest(url: string, data: object) {
+  protected async uploadFiles(url: string, data: FormData) {
+    const request = await this.instance({
+      method: 'POST',
+      headers: {
+        'content-type': 'multipart/form-data',
+      },
+      url: url,
+      data: data
+    });
+
+    return request.data;
+  }
+
+  protected async patchRequest(url: string, data: object, params?: AxiosRequestConfig) {
     const request = await this.instance({
       method: 'PATCH',
       url: url,
-      data: data
+      data: data,
+      params
     });
 
     return request.data;

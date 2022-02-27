@@ -1,8 +1,8 @@
-import EventEmitter from '../utils/RequestEmitter';
+import RequestEmitter from '../utils/RequestEmitter';
 import type { blockUserReponse } from './Interfaces/Block';
 import type { emptyResponse } from './Interfaces/Global';
 
-class BlockManager extends EventEmitter {
+class BlockManager extends RequestEmitter {
 
   constructor(token: string) {
     super(token);
