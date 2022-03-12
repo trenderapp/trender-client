@@ -4,7 +4,7 @@ import { baseapiurl } from './Constante';
 
 class RequestEmitter extends Events {
   private instance: AxiosInstance;
-
+  
   constructor(token: string) {
     super();
 
@@ -32,6 +32,10 @@ class RequestEmitter extends Events {
       method: 'POST',
       headers: {
         'content-type': 'multipart/form-data',
+      },
+      onUploadProgress: (progressEvent) => {
+        var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total );
+        this.emit('upload_progress', percentCompleted);
       },
       url: url,
       data: data

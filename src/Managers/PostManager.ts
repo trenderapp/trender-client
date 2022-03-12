@@ -13,7 +13,7 @@ class PostManager extends RequestEmitter {
 
     formdata.append("posts", files);
 
-    const request = await this.uploadFiles(`/upload`, formdata);
+    const request = await this.uploadFiles(`/upload?type=posts`, formdata);
     const response = request as uploadFiles;
 
     return response;
@@ -33,9 +33,9 @@ class PostManager extends RequestEmitter {
     return response;
   }
 
-  public async fetch() {
-
-    return true;
+  public async fetch(user_id: string) {
+    
+    return user_id;
   }
 }
 

@@ -1,8 +1,8 @@
 {
   "name": "trender-client",
-  "version": "0.0.1",
+  "version": "0.2.6",
   "description": "Official Trender client API",
-  "main": "index.js",
+  "main": "./index.js",
   "types": "./index.d.ts",
   "repository": {
     "type": "git",
@@ -26,12 +26,11 @@
     "lint:typings": "tslint src/index.ts",
     "test:typescript": "tsc --noEmit",
     "lint:fix": "eslint src --fix",
-    "dev": "node ./test/test.js",
-    "build": "tsc",
+    "dev": "node ./test/test.mjs",
+    "build": "rm -rf ./dist && tsc && cp README.md ./dist/README.md && cp package.json ./dist/package.json && cp LICENSE ./dist/LICENSE",
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
     "@types/node": "^17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",

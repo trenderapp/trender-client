@@ -7,7 +7,21 @@ export type attachments = {
     id: string,
     name: string,
     size: number,
-    created_at: string
+    mimetype: string,
+    created_at: Date
+}
+
+export type embeds = {
+    /**0 = text only | 1 = image (include gif) | 2 = video 
+     * @default 0
+    */
+    type?: 0 | 1 | 2 | 3,
+    icon_url?: string,
+    url?: string,
+    title?: string,
+    description?: string,
+    color?: string,
+    attachments?: string
 }
 
 export type emptyResponse = {
@@ -23,7 +37,8 @@ export type uploadFiles = {
     error?: error,
     data?: {
         request_id: string,
-        type: string,
+        /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
+        type: 0 | 1 | 2 | 3 | 4,
         attachments: Array<attachments>
     }
 }
