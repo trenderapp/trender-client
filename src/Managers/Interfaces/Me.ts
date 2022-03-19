@@ -1,5 +1,5 @@
 import type LANGUAGES_LIST from "../../utils/ISO-369-1";
-import type { error } from "./Global";
+import type { attachments, error } from "./Global";
 
 export type myInformations = {
     error?: error,
@@ -13,13 +13,13 @@ export type myInformations = {
 }
 
 export interface editInformationsParams {
-    nickname: string,
-    username: string,
-    description: string,
-    is_private: boolean,
+    nickname?: string,
+    username?: string,
+    description?: string,
+    is_private?: boolean,
     link?: string,
-    avatar?: string | Blob,
-    banner?: string | Blob
+    avatar?: attachments,
+    banner?: attachments
 }
 
 export type editInformationsResponse = {

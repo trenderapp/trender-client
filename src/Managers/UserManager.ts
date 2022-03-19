@@ -3,7 +3,7 @@ import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
 import FollowManager from './FollowManager';
-import type { emptyResponse } from './Interfaces/Global';
+import type { emptyResponse, uploadFiles } from './Interfaces/Global';
 import type { editInformationsParams, editInformationsResponse } from './Interfaces/Me';
 import type { searchUsers, searchUsersParams } from './Interfaces/Search';
 import type { profileInformations } from './Interfaces/User';
@@ -63,23 +63,32 @@ class UserManager extends RequestEmitter {
   /**
    * Update your account
    */
-  public async edit(options: editInformationsParams) {
-    
+  
+   public async uploadAvatar(files: Blob) {
     const formdata = new FormData();
 
-    formdata.append("avatar", options?.avatar ? options.avatar : "false")
-    formdata.append("banner", options?.banner ? options.banner : "false")
-    formdata.append("is_private", options.is_private.toString())
-    formdata.append("description", options.description)
-    formdata.append("link", options?.link ?? "")
-    formdata.append("nickname", options.nickname)
-    formdata.append("username", options.username)
+    formdata.append("avatar", files);
 
-    const request = await this.patchRequest(`/users/me`, formdata, {
-      headers: {
-      'content-type': 'multipart/form-data'
-      }
-    })
+    const request = await this.uploadFiles(`/upload?type=avatar`, formdata);
+    const response = request as uploadFiles;
+
+    return response;
+  }
+
+  public async uploadBanner(files: Blob) {
+    const formdata = new FormData();
+
+    formdata.append("banner", files);
+
+    const request = await this.uploadFiles(`/upload?type=banner`, formdata);
+    const response = request as uploadFiles;
+
+    return response;
+  }
+
+  public async edit(options: editInformationsParams) {
+    
+    const request = await this.patchRequest(`/users/me`, options)
 
     const response = request as editInformationsResponse;
 
