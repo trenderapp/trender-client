@@ -1,4 +1,4 @@
-import type { attachments, embeds, error } from "./Global"
+import type { attachments, embeds, error, givewayInterface, pollInterface } from "./Global"
 
 export interface createPostParameters {
     request_id?: string,
@@ -19,6 +19,30 @@ export interface createPostReponse {
         type: 0 | 1 | 2 | 3 | 4,
         // poll?: pollInterface,
         // giveway?: givewayInterface,
-        created_at: Date,
+        created_at: Date
     }
+}
+
+export interface postInterface {
+    post_id?: string,
+    user_id?: string,
+    attached_post_id?: string,
+    attachments?: Array<attachments>,
+    description: string,
+    embeds?: Array<embeds>,
+    /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
+    type: 0 | 1 | 2 | 3 | 4,
+    poll?: {
+      poll_id: string,
+      time: {
+        days: number,
+        hours: number,
+        minutes: number,
+      },
+      options: Array<pollInterface>,
+    };
+    giveway?: givewayInterface,
+    created_at?: Date,
+    likes: number,
+    comments: number
 }

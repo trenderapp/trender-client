@@ -1,11 +1,15 @@
 import RequestEmitter from '../utils/RequestEmitter';
 import type { emptyResponse, uploadFiles } from './Interfaces/Global';
 import type { createPostParameters, createPostReponse } from './Interfaces/Post';
+import PostUserManager from './PostUserManager';
 
 class PostManager extends RequestEmitter {
+  public user: PostUserManager;
 
   constructor(token: string) {
     super(token);
+
+    this.user = new PostUserManager(token);
   }
 
   public async uploadFile(files: Blob) {

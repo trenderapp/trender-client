@@ -19,6 +19,7 @@ class UserManager extends RequestEmitter {
     this.block = new BlockManager(token);
   }
 
+  
   public flags(bits?: string) {
     return new UserPermissions(bits);
   }
@@ -60,9 +61,7 @@ class UserManager extends RequestEmitter {
     return response;
   }
 
-  /**
-   * Update your account
-   */
+  // Update your account
   
    public async uploadAvatar(files: Blob) {
     const formdata = new FormData();

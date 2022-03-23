@@ -4,6 +4,8 @@ export type error = {
 }
 
 export type attachments = {
+    height?: number,
+    width?: number,
     id: string,
     name: string,
     size: number,
