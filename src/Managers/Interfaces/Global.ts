@@ -46,6 +46,14 @@ export type emptyResponse = {
     error?: error
 }
 
+export type successResponse = {
+    error?: error,
+    data?: {
+        message: string,
+        code: 200
+    }
+}
+
 export type paginationParams = {
     skip?: number | string,
     limit?: number | string

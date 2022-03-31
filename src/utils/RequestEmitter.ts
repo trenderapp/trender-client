@@ -1,13 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import Events from 'events';
 import { baseapiurl } from './Constante';
 
-class RequestEmitter extends Events {
+class RequestEmitter {
   private instance: AxiosInstance;
   
   constructor(token: string) {
-    super();
-
     this.instance = axios.create({
       baseURL: baseapiurl,
       headers: {

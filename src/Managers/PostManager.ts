@@ -1,7 +1,7 @@
 import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter from '../utils/RequestEmitter';
-import type { emptyResponse, uploadFiles } from './Interfaces/Global';
-import type { createPostParameters, createPostReponse } from './Interfaces/Post';
+import type { emptyResponse, successResponse, uploadFiles } from './Interfaces/Global';
+import type { createPostParameters, createPostReponse, postResponseSchema } from './Interfaces/Post';
 import PostUserManager from './PostUserManager';
 
 class PostManager extends RequestEmitter {
@@ -38,6 +38,27 @@ class PostManager extends RequestEmitter {
   public async delete(target_id: string) {
     const request = await this.deleteRequest(`/posts/${target_id}`);
     const response = request as emptyResponse;
+
+    return response;
+  }
+
+  public async unPin(target_id: string) {
+    const request = await this.deleteRequest(`/posts/${target_id}/pin`);
+    const response = request as emptyResponse;
+
+    return response;
+  }
+
+  public async pin(target_id: string) {
+    const request = await this.postRequest(`/posts/${target_id}/pin`, {});
+    const response = request as successResponse;
+
+    return response;
+  }
+
+  public async getPinPost(target_id: string) {
+    const request = await this.getRequest(`/posts/${target_id}/pin`);
+    const response = request as postResponseSchema;
 
     return response;
   }

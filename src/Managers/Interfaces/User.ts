@@ -12,6 +12,7 @@ export type userInfo = {
     flags: number,
     is_private: boolean,
     allow_mp: boolean,
+    pined_post?: string,
     created_at: Date
 }
 
