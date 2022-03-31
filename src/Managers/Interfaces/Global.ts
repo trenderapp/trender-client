@@ -13,6 +13,22 @@ export type attachments = {
     created_at: Date
 }
 
+export type userInfo = {
+    user_id: string,
+    nickname: string,
+    username: string,
+    is_private: boolean,
+    avatar: string,
+    flags: number,
+    description: string,
+    certified: boolean,
+    banner: string,
+    accent_color: string,
+    allow_mp: boolean,
+    created_at: string,
+    link: string
+}
+
 export type embeds = {
     /**0 = text only | 1 = image (include gif) | 2 = video 
      * @default 0

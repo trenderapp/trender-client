@@ -1,3 +1,4 @@
+import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter from '../utils/RequestEmitter';
 import type { emptyResponse, uploadFiles } from './Interfaces/Global';
 import type { createPostParameters, createPostReponse } from './Interfaces/Post';
@@ -10,6 +11,10 @@ class PostManager extends RequestEmitter {
     super(token);
 
     this.user = new PostUserManager(token);
+  }
+
+  public file(user_id: string, post_id: string, file_name: string) {
+    return `${cdnsiteurl}/posts/${user_id}/${post_id}/${file_name}`
   }
 
   public async uploadFile(files: Blob) {

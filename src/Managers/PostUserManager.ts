@@ -1,5 +1,6 @@
 import RequestEmitter from "../utils/RequestEmitter";
-import type { postInterface } from "./Interfaces/Post";
+import type { paginationParams } from "./Interfaces/Global";
+import type { postResponse } from "./Interfaces/Post";
 
 class PostUserManager extends RequestEmitter {
 
@@ -7,10 +8,12 @@ class PostUserManager extends RequestEmitter {
         super(token);
     }
 
-    public async fetch(target_id: string) {
-        const request = await this.getRequest(`/users/${target_id}/posts`);
+    public async fetch(nickname: string, options?: paginationParams) {
+        const request = await this.getRequest(`/users/${nickname}/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
-        return request as postInterface;
+        const response = request as postResponse;
+        
+        return response;
     }
 }
 
