@@ -85,6 +85,16 @@ class PostManager extends RequestEmitter {
     return response;
   }
 
+  public async report(target_id: string, reason: number, description?: string) {
+    const request = await this.postRequest(`/posts/${target_id}/reports`, {
+        reason: reason,
+        description: description
+    });
+    const response = request as successResponse;
+
+    return response;
+  }
+
   public async fetch(options?: paginationParams) {
     const request = await this.getRequest(`/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 

@@ -3,7 +3,7 @@ import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
 import FollowManager from './FollowManager';
-import type { emptyResponse, uploadFiles } from './Interfaces/Global';
+import type { successResponse, uploadFiles } from './Interfaces/Global';
 import type { editInformationsParams, editInformationsResponse } from './Interfaces/Me';
 import type { searchUsers, searchUsersParams } from './Interfaces/Search';
 import type { profileInformations } from './Interfaces/User';
@@ -45,12 +45,12 @@ class UserManager extends RequestEmitter {
   }
 
   public async report(target_id: string, reason: number, description?: string) {
-    const request = await this.postRequest(`/users/${target_id}/report`, {
+    const request = await this.postRequest(`/users/${target_id}/reports`, {
         reason: reason,
         description: description
     });
 
-    const response = request as emptyResponse;
+    const response = request as successResponse;
     return response;
   }
 
