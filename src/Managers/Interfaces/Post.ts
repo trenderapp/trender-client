@@ -2,6 +2,9 @@ import type { attachments, embeds, error, givewayInterface, pollInterface, userI
 
 export interface createPostParameters {
     request_id?: string,
+    /**
+     * Use it to create a comment
+     */
     attached_post_id?: string,
     description: string,
     attachments?: Array<attachments>

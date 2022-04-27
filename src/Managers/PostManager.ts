@@ -95,6 +95,22 @@ class PostManager extends RequestEmitter {
     return response;
   }
 
+  public async fetchOne(post_id: string) {
+    const request = await this.getRequest(`/posts/${post_id}`);
+
+    const response = request as postResponseSchema;
+    
+    return response;
+  }
+
+  public async comments(post_id: string, options?: paginationParams) {
+    const request = await this.getRequest(`/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
+
+    const response = request as postResponseSchema;
+    
+    return response;
+  }
+
   public async fetch(options?: paginationParams) {
     const request = await this.getRequest(`/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
