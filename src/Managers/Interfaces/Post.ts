@@ -57,6 +57,11 @@ export interface postResponse {
   data?: Array<postResponseSchema>
 }
 
+export interface pinedPostResponse {
+  error?: error,
+  data?: postResponseSchema
+}
+
 export interface postInterface {
     post_id?: string,
     user_id?: string,

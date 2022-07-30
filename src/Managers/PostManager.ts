@@ -1,7 +1,7 @@
 import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter from '../utils/RequestEmitter';
 import type { emptyResponse, paginationParams, successResponse, uploadFiles } from './Interfaces/Global';
-import type { createPostParameters, createPostReponse, postResponse, postResponseSchema } from './Interfaces/Post';
+import type { createPostParameters, createPostReponse, pinedPostResponse, postResponse, postResponseSchema } from './Interfaces/Post';
 import type { searchUsers } from './Interfaces/Search';
 import PostUserManager from './PostUserManager';
 
@@ -59,7 +59,7 @@ class PostManager extends RequestEmitter {
 
   public async getPinPost(target_id: string) {
     const request = await this.getRequest(`/posts/${target_id}/pin`);
-    const response = request as postResponseSchema;
+    const response = request as pinedPostResponse;
 
     return response;
   }
