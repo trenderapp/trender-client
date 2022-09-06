@@ -1,3 +1,4 @@
+import GuildManager from './Managers/GuildManager';
 import type { myInformations } from './Managers/Interfaces/Me';
 import PostManager from './Managers/PostManager';
 import UserManager from './Managers/UserManager';
@@ -10,12 +11,14 @@ class Client extends RequestEmitter {
     
     public user: UserManager;
     public post: PostManager;
+    public guild: GuildManager;
 
     constructor(token: string) {
         super(token);
 
         this.user = new UserManager(token);
         this.post = new PostManager(token);
+        this.guild = new GuildManager(token);
     }
 
     public async informations() {
