@@ -12,7 +12,7 @@ class Client extends RequestEmitter {
     public user: UserManager;
     public post: PostManager;
     public guild: GuildManager;
-
+    
     constructor(token: string) {
         super(token);
 
