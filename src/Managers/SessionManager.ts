@@ -18,7 +18,7 @@ class SessionManager extends RequestEmitter {
   }
 
   public async deleteAll(password: string) {
-    const request = await this.deleteRequest(`/sessions/all`, {
+    const request = await this.deleteRequest(`/sessions`, {
       password: password
     });
 
@@ -28,7 +28,7 @@ class SessionManager extends RequestEmitter {
 
 
   public async fetch() {
-    const request = await this.getRequest(`/sessions/all`)
+    const request = await this.getRequest(`/sessions`)
 
     const response = request as sessionFetchResponse;
 

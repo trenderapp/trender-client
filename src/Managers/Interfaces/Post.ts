@@ -6,7 +6,7 @@ export interface createPostParameters {
      * Use it to create a comment
      */
     attached_post_id?: string,
-    description: string,
+    content: string,
     attachments?: Array<attachments>
 }
 
@@ -17,7 +17,9 @@ export interface createPostReponse {
         attached_post_id?: string,
         attachments?: Array<attachments>,
         embeds: Array<embeds>,
-        description: string,
+        mentions: Array<string>,
+        hashtags: Array<string>,
+        content: string,
         /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
         type: 0 | 1 | 2 | 3 | 4,
         // poll?: pollInterface,
