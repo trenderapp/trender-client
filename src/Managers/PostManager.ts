@@ -1,5 +1,5 @@
 import { cdnsiteurl } from '../utils/Constante';
-import RequestEmitter from '../utils/RequestEmitter';
+import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { emptyResponse, paginationParams, successResponse, uploadFiles } from './Interfaces/Global';
 import type { createPostParameters, createPostReponse, pinedPostResponse, postResponse, postResponseSchema } from './Interfaces/Post';
 import type { searchUsers } from './Interfaces/Search';
@@ -8,10 +8,10 @@ import PostUserManager from './PostUserManager';
 class PostManager extends RequestEmitter {
   public user: PostUserManager;
 
-  constructor(token: string) {
-    super(token);
+  constructor(params: requestParams) {
+    super(params);
 
-    this.user = new PostUserManager(token);
+    this.user = new PostUserManager(params);
   }
 
   public file(user_id: string, post_id: string, file_name: string) {

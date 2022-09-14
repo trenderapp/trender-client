@@ -1,20 +1,25 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { baseapiurl } from './Constante';
 
+export type requestParams = {
+  token: string,
+  apiurl?: string
+}
+
 class RequestEmitter {
   private instance: AxiosInstance;
   
-  constructor(token: string) {
+  constructor(params: requestParams) {
     this.instance = axios.create({
-      baseURL: baseapiurl,
+      baseURL: params?.apiurl ?? baseapiurl,
       headers: {
-        trendertokenapi: token ?? null
+        trendertokenapi: params?.token ?? ""
       },
       validateStatus: s => s < 501
     });
   }
 
-  protected async postRequest(url: string, data: object) {
+  protected async postRequest(url: string, data?: object) {
     const request = await this.instance({
       method: 'POST',
       url: url,
@@ -48,7 +53,7 @@ class RequestEmitter {
     return request.data;
   }
 
-  protected async putRequest(url: string, data: object) {
+  protected async putRequest(url: string, data?: object) {
     const request = await this.instance({
       method: 'PUT',
       url: url,
@@ -67,10 +72,11 @@ class RequestEmitter {
     return request.data;
   }
 
-  protected async deleteRequest(url: string) {
+  protected async deleteRequest(url: string, data?: object) {
     const request = await this.instance({
       method: 'DELETE',
-      url: url
+      url: url,
+      data: data
     });
 
     return request.data;

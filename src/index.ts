@@ -1,9 +1,10 @@
 import GuildManager from './Managers/GuildManager';
-import type { myInformations } from './Managers/Interfaces/Me';
 import PostManager from './Managers/PostManager';
+import SessionManager from './Managers/SessionManager';
 import UserManager from './Managers/UserManager';
 import UserFlags from './Permissions/Flags';
-import RequestEmitter from './utils/RequestEmitter';
+import RequestEmitter, { requestParams } from './utils/RequestEmitter';
+import type { myInformations } from './Managers/Interfaces/Me';
 
 export const userFlags = UserFlags;
 
@@ -12,13 +13,15 @@ class Client extends RequestEmitter {
     public user: UserManager;
     public post: PostManager;
     public guild: GuildManager;
+    public session: SessionManager;
     
-    constructor(token: string) {
-        super(token);
+    constructor(params: requestParams) {
+        super(params);
 
-        this.user = new UserManager(token);
-        this.post = new PostManager(token);
-        this.guild = new GuildManager(token);
+        this.user = new UserManager(params);
+        this.post = new PostManager(params);
+        this.guild = new GuildManager(params);
+        this.session = new SessionManager(params);
     }
 
     public async informations() {

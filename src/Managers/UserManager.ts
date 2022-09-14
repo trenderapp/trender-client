@@ -1,6 +1,6 @@
 import UserPermissions from '../Permissions/UserPermissions';
 import { cdnsiteurl } from '../utils/Constante';
-import RequestEmitter from '../utils/RequestEmitter';
+import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
 import FollowManager from './FollowManager';
 import type { successResponse, uploadFiles } from './Interfaces/Global';
@@ -12,11 +12,11 @@ class UserManager extends RequestEmitter {
     public block: BlockManager;
     public follow: FollowManager;
 
-    constructor(token: string) {
-    super(token);
+    constructor(params: requestParams) {
+    super(params);
 
-    this.follow = new FollowManager(token);
-    this.block = new BlockManager(token);
+    this.follow = new FollowManager(params);
+    this.block = new BlockManager(params);
   }
 
   
@@ -90,6 +90,15 @@ class UserManager extends RequestEmitter {
     const request = await this.patchRequest(`/users/me`, options)
 
     const response = request as editInformationsResponse;
+
+    return response;
+  }
+
+  public async logout() {
+    
+    const request = await this.postRequest(`/logout`)
+
+    const response = request as successResponse;
 
     return response;
   }

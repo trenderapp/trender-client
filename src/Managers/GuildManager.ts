@@ -1,11 +1,11 @@
-import RequestEmitter from '../utils/RequestEmitter';
+import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { emptyResponse } from './Interfaces/Global';
 import type { guildCreateResponse, guildFetchResponse } from './Interfaces/Guild';
 
 class GuildManager extends RequestEmitter {
 
-    constructor(token: string) {
-      super(token);
+    constructor(params: requestParams) {
+      super(params);
     }
 
   public async create(users: Array<string>) {

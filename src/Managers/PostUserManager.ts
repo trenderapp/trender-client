@@ -1,11 +1,11 @@
-import RequestEmitter from "../utils/RequestEmitter";
+import RequestEmitter, { requestParams } from "../utils/RequestEmitter";
 import type { paginationParams } from "./Interfaces/Global";
 import type { postResponse } from "./Interfaces/Post";
 
 class PostUserManager extends RequestEmitter {
 
-    constructor(token: string) {
-        super(token);
+    constructor(params: requestParams) {
+        super(params);
     }
 
     public async fetch(nickname: string, options?: paginationParams) {
