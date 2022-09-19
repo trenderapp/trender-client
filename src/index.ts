@@ -5,7 +5,7 @@ import UserManager from './Managers/UserManager';
 import UserFlags from './Permissions/Flags';
 import RequestEmitter, { requestParams } from './utils/RequestEmitter';
 import type { myInformations } from './Managers/Interfaces/Me';
-
+import MessageManager from './Managers/MessageManager';
 export const userFlags = UserFlags;
 
 class Client extends RequestEmitter {
@@ -14,7 +14,9 @@ class Client extends RequestEmitter {
     public post: PostManager;
     public guild: GuildManager;
     public session: SessionManager;
-    
+    public message: MessageManager;
+
+
     constructor(params: requestParams) {
         super(params);
 
@@ -22,6 +24,7 @@ class Client extends RequestEmitter {
         this.post = new PostManager(params);
         this.guild = new GuildManager(params);
         this.session = new SessionManager(params);
+        this.message = new MessageManager(params);
     }
 
     public async informations() {

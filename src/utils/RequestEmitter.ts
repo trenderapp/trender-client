@@ -3,6 +3,7 @@ import { baseapiurl } from './Constante';
 
 export type requestParams = {
   token: string,
+  websocketurl?: string,
   apiurl?: string
 }
 
