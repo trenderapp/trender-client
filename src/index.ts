@@ -6,7 +6,10 @@ import UserFlags from './Permissions/Flags';
 import RequestEmitter, { requestParams } from './utils/RequestEmitter';
 import type { myInformations } from './Managers/Interfaces/Me';
 import MessageManager from './Managers/MessageManager';
+import WebSocketRoutes from './Permissions/WebSocket';
+
 export const userFlags = UserFlags;
+export const webSocketRoutes = WebSocketRoutes;
 
 class Client extends RequestEmitter {
     
