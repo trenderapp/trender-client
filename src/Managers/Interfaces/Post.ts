@@ -45,7 +45,9 @@ export interface postResponseSchema {
       minutes: number,
     },
     options: Array<pollInterface>,
-  };
+  },
+  mentions?: Array<userInfo>,
+  hashtags?: Array<string>,
   giveway?: givewayInterface,
   created_at?: Date,
   from: userInfo,

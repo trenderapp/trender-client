@@ -1,4 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
+import type { paginationParams } from './Interfaces/Global';
 import type { createParams, messageCreateResponse, messageFetchResponse } from './Interfaces/Message';
 
 class MessageManager extends RequestEmitter {
@@ -18,8 +19,8 @@ class MessageManager extends RequestEmitter {
   }
 
 
-  public async fetch(channel_id: string) {
-    const request = await this.getRequest(`/messages/${channel_id}`);
+  public async fetch(channel_id: string, options?: paginationParams) {
+    const request = await this.getRequest(`/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`);
 
     const response = request as messageFetchResponse;
 
