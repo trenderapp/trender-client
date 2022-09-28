@@ -26,10 +26,11 @@ export interface editInformationsParams {
 export type editInformationsResponse = {
     error?: error,
     data?: {
-        is_private: boolean,
-        description: string,
-        nickname: string,
-        username: string,
+        is_private?: boolean,
+        private_messages?: boolean,
+        description?: string,
+        nickname?: string,
+        username?: string,
         avatar?: string,
         accent_color?: string,
         banner?: string

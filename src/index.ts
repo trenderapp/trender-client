@@ -39,4 +39,4 @@ class Client extends RequestEmitter {
     }
 }
   
-  export default Client;
+export default Client;
