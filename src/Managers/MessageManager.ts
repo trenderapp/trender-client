@@ -1,5 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { paginationParams } from './Interfaces/Global';
+import type { paginationParams, successResponse } from './Interfaces/Global';
 import type { createParams, messageCreateResponse, messageFetchResponse } from './Interfaces/Message';
 
 class MessageManager extends RequestEmitter {
@@ -23,6 +23,16 @@ class MessageManager extends RequestEmitter {
     const request = await this.getRequest(`/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`);
 
     const response = request as messageFetchResponse;
+
+    return response;
+  }
+
+  public async report(target_id: string, reason: number, description?: string) {
+    const request = await this.postRequest(`/messages/${target_id}/reports`, {
+        reason: reason,
+        description: description
+    });
+    const response = request as successResponse;
 
     return response;
   }

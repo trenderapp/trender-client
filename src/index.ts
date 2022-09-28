@@ -37,7 +37,6 @@ class Client extends RequestEmitter {
 
         return response;
     }
-
 }
   
   export default Client;

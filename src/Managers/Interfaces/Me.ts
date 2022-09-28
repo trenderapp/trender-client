@@ -17,6 +17,7 @@ export interface editInformationsParams {
     username?: string,
     description?: string,
     is_private?: boolean,
+    private_messages?: boolean,
     link?: string,
     avatar?: attachments,
     banner?: attachments
