@@ -1,6 +1,6 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { paginationParams, successResponse } from './Interfaces/Global';
-import type { createParams, messageCreateResponse, messageFetchResponse } from './Interfaces/Message';
+import type { createParams, messageCreateResponse, messageFetchResponse, unreadFetchResponse } from './Interfaces/Message';
 
 class MessageManager extends RequestEmitter {
 
@@ -23,6 +23,14 @@ class MessageManager extends RequestEmitter {
     const request = await this.getRequest(`/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`);
 
     const response = request as messageFetchResponse;
+
+    return response;
+  }
+
+  public async unreads() {
+    const request = await this.getRequest(`/messages/unreads`);
+
+    const response = request as unreadFetchResponse;
 
     return response;
   }

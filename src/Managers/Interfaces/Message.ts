@@ -37,3 +37,15 @@ export type messageFetchResponse = {
     error?: error,
     data?: Array<fetchGuildResponseSchema>
 }
+
+export type unreadFetchResponse = {
+    error?: error,
+    data?: Array<{
+        /**
+         * ID du dernier message lu
+         */
+        message_id: string,
+        user_id: string,
+        channel_id: string,
+    } | []>
+}
