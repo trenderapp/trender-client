@@ -7,6 +7,7 @@ import RequestEmitter, { requestParams } from './utils/RequestEmitter';
 import type { myInformations } from './Managers/Interfaces/Me';
 import MessageManager from './Managers/MessageManager';
 import WebSocketRoutes from './Permissions/WebSocket';
+import AffiliationManager from './Managers/AffiliationManager';
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
@@ -18,6 +19,7 @@ class Client extends RequestEmitter {
     public guild: GuildManager;
     public session: SessionManager;
     public message: MessageManager;
+    public affiliation: AffiliationManager;
 
 
     constructor(params: requestParams) {
@@ -28,6 +30,7 @@ class Client extends RequestEmitter {
         this.guild = new GuildManager(params);
         this.session = new SessionManager(params);
         this.message = new MessageManager(params);
+        this.affiliation = new AffiliationManager(params);
     }
 
     public async informations() {
