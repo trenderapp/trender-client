@@ -25,14 +25,14 @@ class FollowManager extends RequestEmitter {
     const request = await this.putRequest(`/follows/accept`, {
       follow_id: follow_id
     });
-    
+
     const response = request as followInformations;
 
     return response;
   }
 
   public async unacceptedList() {
-    const request = await this.getRequest("/users/me/follows");
+    const request = await this.getRequest('/users/me/follows');
 
     const response = request as followListInformations;
 
@@ -40,7 +40,9 @@ class FollowManager extends RequestEmitter {
   }
 
   public async follows(nickname: string, options?: paginationParams) {
-    const request = await this.getRequest(`/users/${nickname}/follows?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
+    const request = await this.getRequest(
+      `/users/${nickname}/follows?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
+    );
 
     const response = request as followListInformations;
 
@@ -48,7 +50,9 @@ class FollowManager extends RequestEmitter {
   }
 
   public async followers(nickname: string, options?: paginationParams) {
-    const request = await this.getRequest(`/users/${nickname}/followers?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
+    const request = await this.getRequest(
+      `/users/${nickname}/followers?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
+    );
 
     const response = request as followListInformations;
 

@@ -3,7 +3,6 @@ import type { affiliationCreateResponse, affiliationFetchResponse } from './Inte
 import type { emptyResponse, successResponse } from './Interfaces/Global';
 
 class AffiliationManager extends RequestEmitter {
-
   constructor(params: requestParams) {
     super(params);
   }

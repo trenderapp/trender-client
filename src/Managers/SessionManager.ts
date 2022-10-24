@@ -3,10 +3,9 @@ import type { emptyResponse, successResponse } from './Interfaces/Global';
 import type { sessionFetchResponse } from './Interfaces/Session';
 
 class SessionManager extends RequestEmitter {
-
-    constructor(params: requestParams) {
-      super(params);
-    }
+  constructor(params: requestParams) {
+    super(params);
+  }
 
   public async deleteOne(session_id: string, params: { password: string }) {
     const request = await this.deleteRequest(`/sessions/${session_id}`, {
@@ -26,9 +25,8 @@ class SessionManager extends RequestEmitter {
     return response;
   }
 
-
   public async fetch() {
-    const request = await this.getRequest(`/sessions`)
+    const request = await this.getRequest(`/sessions`);
 
     const response = request as sessionFetchResponse;
 

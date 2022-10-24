@@ -1,7 +1,13 @@
 import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { emptyResponse, paginationParams, successResponse, uploadFiles } from './Interfaces/Global';
-import type { createPostParameters, createPostReponse, pinedPostResponse, postResponse, postResponseSchema } from './Interfaces/Post';
+import type {
+  createPostParameters,
+  createPostReponse,
+  pinedPostResponse,
+  postResponse,
+  postResponseSchema
+} from './Interfaces/Post';
 import type { searchUsers } from './Interfaces/Search';
 import PostUserManager from './PostUserManager';
 
@@ -15,13 +21,13 @@ class PostManager extends RequestEmitter {
   }
 
   public file(user_id: string, post_id: string, file_name: string) {
-    return `${cdnsiteurl}/posts/${user_id}/${post_id}/${file_name}`
+    return `${cdnsiteurl}/posts/${user_id}/${post_id}/${file_name}`;
   }
 
   public async uploadFile(files: Blob) {
     const formdata = new FormData();
 
-    formdata.append("posts", files);
+    formdata.append('posts', files);
 
     const request = await this.uploadFiles(`/upload?type=posts`, formdata);
     const response = request as uploadFiles;
@@ -30,7 +36,7 @@ class PostManager extends RequestEmitter {
   }
 
   public async create(options: createPostParameters) {
-    const request = await this.postRequest(`/posts`, options)
+    const request = await this.postRequest(`/posts`, options);
     const response = request as createPostReponse;
 
     return response;
@@ -87,8 +93,8 @@ class PostManager extends RequestEmitter {
 
   public async report(target_id: string, reason: number, description?: string) {
     const request = await this.postRequest(`/posts/${target_id}/reports`, {
-        reason: reason,
-        description: description
+      reason: reason,
+      description: description
     });
     const response = request as successResponse;
 
@@ -99,15 +105,17 @@ class PostManager extends RequestEmitter {
     const request = await this.getRequest(`/posts/${post_id}`);
 
     const response = request as postResponseSchema;
-    
+
     return response;
   }
 
   public async comments(post_id: string, options?: paginationParams) {
-    const request = await this.getRequest(`/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
+    const request = await this.getRequest(
+      `/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
+    );
 
     const response = request as postResponseSchema;
-    
+
     return response;
   }
 
@@ -115,7 +123,7 @@ class PostManager extends RequestEmitter {
     const request = await this.getRequest(`/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
     const response = request as postResponse;
-    
+
     return response;
   }
 }

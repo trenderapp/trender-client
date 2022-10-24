@@ -1,12 +1,16 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { paginationParams, successResponse } from './Interfaces/Global';
-import type { createParams, messageCreateResponse, messageFetchResponse, unreadFetchResponse } from './Interfaces/Message';
+import type {
+  createParams,
+  messageCreateResponse,
+  messageFetchResponse,
+  unreadFetchResponse
+} from './Interfaces/Message';
 
 class MessageManager extends RequestEmitter {
-
-    constructor(params: requestParams) {
-      super(params);
-    }
+  constructor(params: requestParams) {
+    super(params);
+  }
 
   public async create(channel_id: string, params: createParams) {
     const request = await this.postRequest(`/messages/${channel_id}`, {
@@ -18,9 +22,10 @@ class MessageManager extends RequestEmitter {
     return response;
   }
 
-
   public async fetch(channel_id: string, options?: paginationParams) {
-    const request = await this.getRequest(`/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`);
+    const request = await this.getRequest(
+      `/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`
+    );
 
     const response = request as messageFetchResponse;
 
@@ -37,8 +42,8 @@ class MessageManager extends RequestEmitter {
 
   public async report(target_id: string, reason: number, description?: string) {
     const request = await this.postRequest(`/messages/${target_id}/reports`, {
-        reason: reason,
-        description: description
+      reason: reason,
+      description: description
     });
     const response = request as successResponse;
 

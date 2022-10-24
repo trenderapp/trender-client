@@ -3,7 +3,6 @@ import type { blockUserReponse } from './Interfaces/Block';
 import type { emptyResponse } from './Interfaces/Global';
 
 class BlockManager extends RequestEmitter {
-
   constructor(params: requestParams) {
     super(params);
   }

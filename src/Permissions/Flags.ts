@@ -4,7 +4,7 @@ export const UserFlags = {
   VERIFIED_USER: 1 << 2,
   PREMIUM_USER: 1 << 3,
   EARLY_SUPPORTER: 1 << 4,
-  CERTIFIED_MODERATOR: 1 << 5,
+  CERTIFIED_MODERATOR: 1 << 5
 };
 
 export default UserFlags;

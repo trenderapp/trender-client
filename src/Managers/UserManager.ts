@@ -9,17 +9,16 @@ import type { searchUsers, searchUsersParams } from './Interfaces/Search';
 import type { profileInformations } from './Interfaces/User';
 
 class UserManager extends RequestEmitter {
-    public block: BlockManager;
-    public follow: FollowManager;
+  public block: BlockManager;
+  public follow: FollowManager;
 
-    constructor(params: requestParams) {
+  constructor(params: requestParams) {
     super(params);
 
     this.follow = new FollowManager(params);
     this.block = new BlockManager(params);
   }
 
-  
   public flags(bits?: string) {
     return new UserPermissions(bits);
   }
@@ -36,7 +35,7 @@ class UserManager extends RequestEmitter {
   public badge(flag_name: string) {
     return `${cdnsiteurl}/assets/badges/${flag_name}.png`;
   }
-  
+
   public async profile(nickname: string) {
     const request = await this.getRequest(`/users/${nickname}`);
 
@@ -46,8 +45,8 @@ class UserManager extends RequestEmitter {
 
   public async report(target_id: string, reason: number, description?: string) {
     const request = await this.postRequest(`/users/${target_id}/reports`, {
-        reason: reason,
-        description: description
+      reason: reason,
+      description: description
     });
 
     const response = request as successResponse;
@@ -55,18 +54,20 @@ class UserManager extends RequestEmitter {
   }
 
   public async search(query: string, params?: searchUsersParams) {
-    const request = await this.getRequest(`/users/search/all?query=${query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 30}`);
+    const request = await this.getRequest(
+      `/users/search/all?query=${query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 30}`
+    );
     const response = request as searchUsers;
 
     return response;
   }
 
   // Update your account
-  
-   public async uploadAvatar(files: Blob) {
+
+  public async uploadAvatar(files: Blob) {
     const formdata = new FormData();
 
-    formdata.append("avatar", files);
+    formdata.append('avatar', files);
 
     const request = await this.uploadFiles(`/upload?type=avatar`, formdata);
     const response = request as uploadFiles;
@@ -77,7 +78,7 @@ class UserManager extends RequestEmitter {
   public async uploadBanner(files: Blob) {
     const formdata = new FormData();
 
-    formdata.append("banner", files);
+    formdata.append('banner', files);
 
     const request = await this.uploadFiles(`/upload?type=banner`, formdata);
     const response = request as uploadFiles;
@@ -86,8 +87,7 @@ class UserManager extends RequestEmitter {
   }
 
   public async edit(options: editInformationsParams) {
-    
-    const request = await this.patchRequest(`/users/me`, options)
+    const request = await this.patchRequest(`/users/me`, options);
 
     const response = request as editInformationsResponse;
 
@@ -95,8 +95,7 @@ class UserManager extends RequestEmitter {
   }
 
   public async logout() {
-    
-    const request = await this.postRequest(`/logout`)
+    const request = await this.postRequest(`/logout`);
 
     const response = request as successResponse;
 

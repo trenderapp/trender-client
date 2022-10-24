@@ -2,19 +2,19 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { baseapiurl } from './Constante';
 
 export type requestParams = {
-  token: string,
-  websocketurl?: string,
-  apiurl?: string
-}
+  token: string;
+  websocketurl?: string;
+  apiurl?: string;
+};
 
 class RequestEmitter {
   private instance: AxiosInstance;
-  
+
   constructor(params: requestParams) {
     this.instance = axios.create({
       baseURL: params?.apiurl ?? baseapiurl,
       headers: {
-        trendertokenapi: params?.token ?? ""
+        trendertokenapi: params?.token ?? ''
       },
       validateStatus: s => s < 501
     });
@@ -34,7 +34,7 @@ class RequestEmitter {
     const request = await this.instance({
       method: 'POST',
       headers: {
-        'content-type': 'multipart/form-data',
+        'content-type': 'multipart/form-data'
       },
       url: url,
       data: data
