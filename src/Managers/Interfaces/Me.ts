@@ -1,4 +1,4 @@
-import type LANGUAGES_LIST from "../../utils/ISO-369-1";
+import type * as ISO from "iso-639-1";
 import type { attachments, error } from "./Global";
 
 export type myInformations = {
@@ -8,7 +8,7 @@ export type myInformations = {
         nickname: string,
         avatar: string,
         token: string,
-        locale: LANGUAGES_LIST
+        locale: ISO.LanguageCode
     }
 }
 
@@ -20,7 +20,9 @@ export interface editInformationsParams {
     private_messages?: boolean,
     link?: string,
     avatar?: attachments,
-    banner?: attachments
+    banner?: attachments,
+    locale?: ISO.LanguageCode,
+    language_spoken?: Array<ISO.LanguageCode>
 }
 
 export type editInformationsResponse = {
@@ -33,6 +35,8 @@ export type editInformationsResponse = {
         username?: string,
         avatar?: string,
         accent_color?: string,
-        banner?: string
+        banner?: string,
+        locale?: ISO.LanguageCode,
+        language_spoken?: Array<ISO.LanguageCode>
     }
 }

@@ -8,6 +8,7 @@ import type { myInformations } from './Managers/Interfaces/Me';
 import MessageManager from './Managers/MessageManager';
 import WebSocketRoutes from './Permissions/WebSocket';
 import AffiliationManager from './Managers/AffiliationManager';
+import PushNoficationManager from './Managers/PushNoficationManager';
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
@@ -20,6 +21,7 @@ class Client extends RequestEmitter {
     public session: SessionManager;
     public message: MessageManager;
     public affiliation: AffiliationManager;
+    public pushNotification: PushNoficationManager;
 
 
     constructor(params: requestParams) {
@@ -31,6 +33,7 @@ class Client extends RequestEmitter {
         this.session = new SessionManager(params);
         this.message = new MessageManager(params);
         this.affiliation = new AffiliationManager(params);
+        this.pushNotification = new PushNoficationManager(params);
     }
 
     public async informations() {
