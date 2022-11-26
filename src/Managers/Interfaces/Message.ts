@@ -1,4 +1,5 @@
 import type { error, attachments, embeds } from "./Global"
+import type { postTypes } from "./Post"
 
 export type createParams = {
     content: string,
@@ -18,8 +19,7 @@ type fetchGuildResponseSchema = {
     channel_id: string,
     content: string,
     attachments?: Array<attachments>,
-    /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
-    type: 0 | 1 | 2 | 3 | 4,
+    type: postTypes,
     embeds?: Array<embeds>,
     mentions?: Array<userResponseInterface>,
     hashtags?: Array<string>,

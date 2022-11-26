@@ -40,6 +40,22 @@ class MessageManager extends RequestEmitter {
     return response;
   }
 
+  public async read(channel_id: string, message_id: string) {
+    const request = await this.postRequest(`/messages/${channel_id}/${message_id}`);
+
+    const response = request as successResponse;
+
+    return response;
+  }
+
+  public async delete(channel_id: string, message_id: string) {
+    const request = await this.deleteRequest(`/messages/${channel_id}/${message_id}`);
+
+    const response = request as successResponse;
+
+    return response;
+  }
+
   public async report(target_id: string, reason: number, description?: string) {
     const request = await this.postRequest(`/messages/${target_id}/reports`, {
       reason: reason,

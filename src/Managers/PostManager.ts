@@ -114,7 +114,7 @@ class PostManager extends RequestEmitter {
       `/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
     );
 
-    const response = request as postResponseSchema;
+    const response = request as postResponse;
 
     return response;
   }

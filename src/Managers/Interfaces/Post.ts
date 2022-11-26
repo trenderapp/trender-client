@@ -1,4 +1,8 @@
+import type { LanguageCode } from "iso-639-1"
 import type { attachments, embeds, error, givewayInterface, pollInterface, userInfo } from "./Global"
+
+/**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
+export type postTypes = 0 | 1 | 2 | 3 | 4;
 
 export interface createPostParameters {
     request_id?: string,
@@ -19,8 +23,7 @@ export interface createPostReponse {
         embeds: Array<embeds>,
         mentions: Array<string>,
         hashtags: Array<string>,
-        content: string,
-        /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
+        content: postTypes,
         type: 0 | 1 | 2 | 3 | 4,
         // poll?: pollInterface,
         // giveway?: givewayInterface,
@@ -35,8 +38,7 @@ export interface postResponseSchema {
   attachments?: Array<attachments>,
   description: string,
   embeds?: Array<embeds>,
-  /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
-  type: 0 | 1 | 2 | 3 | 4,
+  type: postTypes
   poll?: {
     poll_id: string,
     time: {
@@ -46,6 +48,7 @@ export interface postResponseSchema {
     },
     options: Array<pollInterface>,
   },
+  locale: LanguageCode,
   mentions?: Array<userInfo>,
   hashtags?: Array<string>,
   giveway?: givewayInterface,
@@ -73,8 +76,7 @@ export interface postInterface {
     attachments?: Array<attachments>,
     description: string,
     embeds?: Array<embeds>,
-    /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
-    type: 0 | 1 | 2 | 3 | 4,
+    type: postTypes,
     poll?: {
       poll_id: string,
       time: {
