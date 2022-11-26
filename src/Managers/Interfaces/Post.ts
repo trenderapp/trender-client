@@ -48,7 +48,7 @@ export interface postResponseSchema {
     },
     options: Array<pollInterface>,
   },
-  locale: LanguageCode,
+  locale?: LanguageCode,
   mentions?: Array<userInfo>,
   hashtags?: Array<string>,
   giveway?: givewayInterface,
