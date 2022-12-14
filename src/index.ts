@@ -10,6 +10,7 @@ import WebSocketRoutes from './Permissions/WebSocket';
 import AffiliationManager from './Managers/AffiliationManager';
 import PushNoficationManager from './Managers/PushNoficationManager';
 import ExploreManager from './Managers/ExploreManager';
+import NotificationManager from './Managers/NotificationManager';
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
@@ -24,7 +25,7 @@ class Client extends RequestEmitter {
     public affiliation: AffiliationManager;
     public pushNotification: PushNoficationManager;
     public explore: ExploreManager;
-
+    public notification: NotificationManager
 
     constructor(params: requestParams) {
         super(params);
@@ -37,6 +38,7 @@ class Client extends RequestEmitter {
         this.affiliation = new AffiliationManager(params);
         this.pushNotification = new PushNoficationManager(params);
         this.explore = new ExploreManager(params);
+        this.notification = new NotificationManager(params);
     }
 
     public async informations() {
