@@ -3,6 +3,8 @@ export type error = {
     code: number
 }
 
+export type notificationTypeInterface = "likes" | "mentions" | "follows";
+
 export type attachments = {
     height?: number,
     width?: number,

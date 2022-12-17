@@ -1,5 +1,5 @@
-import type * as ISO from "iso-639-1";
 import type { attachments, error } from "./Global";
+import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1";
 
 export type myInformations = {
     error?: error,
@@ -8,7 +8,7 @@ export type myInformations = {
         nickname: string,
         avatar: string,
         token: string,
-        locale: ISO.LanguageCode
+        locale: ISO_639_CODE_LIST
     }
 }
 
@@ -21,8 +21,8 @@ export interface editInformationsParams {
     link?: string,
     avatar?: attachments,
     banner?: attachments,
-    locale?: ISO.LanguageCode,
-    language_spoken?: Array<ISO.LanguageCode>
+    locale?: ISO_639_CODE_LIST,
+    language_spoken?: Array<ISO_639_CODE_LIST>
 }
 
 export type editInformationsResponse = {
@@ -36,7 +36,7 @@ export type editInformationsResponse = {
         avatar?: string,
         accent_color?: string,
         banner?: string,
-        locale?: ISO.LanguageCode,
-        language_spoken?: Array<ISO.LanguageCode>
+        locale?: ISO_639_CODE_LIST,
+        language_spoken?: Array<ISO_639_CODE_LIST>
     }
 }

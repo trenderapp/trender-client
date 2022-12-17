@@ -1,4 +1,4 @@
-import type { LanguageCode } from "iso-639-1";
+import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1";
 import type { postTypes } from "./Post";
 
 export interface exploreRecentTrendsParams {
@@ -6,5 +6,5 @@ export interface exploreRecentTrendsParams {
     limit?: number,
     type?: postTypes,
     query?: string,
-    locale?: LanguageCode | "all"
+    locale?: ISO_639_CODE_LIST | "all"
 } 

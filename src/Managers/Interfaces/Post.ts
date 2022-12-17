@@ -1,4 +1,4 @@
-import type { LanguageCode } from "iso-639-1"
+import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1";
 import type { attachments, embeds, error, givewayInterface, pollInterface, userInfo } from "./Global"
 
 /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
@@ -33,30 +33,21 @@ export interface createPostReponse {
 
 export interface postResponseSchema {
   post_id?: string,
-  user_id?: string,
   attached_post_id?: string,
+  content: string,
   attachments?: Array<attachments>,
-  description: string,
+  type: postTypes,
   embeds?: Array<embeds>,
-  type: postTypes
-  poll?: {
-    poll_id: string,
-    time: {
-      days: number,
-      hours: number,
-      minutes: number,
-    },
-    options: Array<pollInterface>,
-  },
-  locale?: LanguageCode,
+  poll?: pollInterface
+  giveway?: givewayInterface,
+  locale?: ISO_639_CODE_LIST,
   mentions?: Array<userInfo>,
   hashtags?: Array<string>,
-  giveway?: givewayInterface,
   created_at?: Date,
   from: userInfo,
-  likes: number,
-  liked: number,
-  comments: number
+  likes?: number,
+  liked?: number,
+  comments?: number
 }
 
 export interface postResponse {

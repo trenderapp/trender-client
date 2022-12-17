@@ -1,22 +1,24 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { paginationParams } from './Interfaces/Global';
-import type { postResponse } from './Interfaces/Post';
+import type { paginationParams, successResponse } from './Interfaces/Global';
+import type { notificationFetchResponse } from './Interfaces/Notification';
 
 class NotificationManager extends RequestEmitter {
   constructor(params: requestParams) {
     super(params);
   }
 
-  public async mentions(params?: paginationParams) {
-    const request = await this.postRequest(`/notifications/mentions`, params);
-    const response = request as postResponse;
+  public async fetch(params?: paginationParams) {
+    const request = await this.getRequest(`/notifications?skip=${params?.skip ?? 0}&limit=${params?.limit ?? 20}`);
+    const response = request as notificationFetchResponse;
 
     return response;
   }
 
-  public async likes(params?: paginationParams) {
-    const request = await this.postRequest(`/notifications/likes`, params);
-    const response = request as postResponse;
+  public async read(notification_id: string) {
+    const request = await this.postRequest(`/notifications`, {
+      notification_id: notification_id
+    });
+    const response = request as successResponse;
 
     return response;
   }

@@ -1,6 +1,6 @@
 {
   "name": "trender-client",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Official Trender client API",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -44,8 +44,7 @@
     "typescript": "^4.8.2"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "iso-639-1": "^2.1.15"
+    "axios": "^0.27.2"
   },
   "engines": {
     "node": ">=14.6.0",
