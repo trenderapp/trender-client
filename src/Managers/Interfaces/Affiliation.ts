@@ -1,6 +1,6 @@
 import type { error } from "./Global"
 
-interface affiliationFetchSchema {
+export interface affiliationFetchSchema {
     my_code?: string,
     affiliate_to?: string
 }

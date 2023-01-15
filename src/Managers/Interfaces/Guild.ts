@@ -1,6 +1,6 @@
 import type { error } from "./Global";
 
-type userInfo = {
+export type userInfo = {
     username: string,
     nickname: string,
     avatar: string,
@@ -12,7 +12,7 @@ type userInfo = {
     user_id: string
 }
 
-type fetchGuildResponseSchema = {
+export type fetchGuildResponseSchema = {
     guild_id: string,
     created_at: Date,
     owner?: string,

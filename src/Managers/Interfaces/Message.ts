@@ -6,7 +6,7 @@ export type createParams = {
     attachments?: Array<attachments>
 }
 
-type userResponseInterface = {
+export type userResponseInterface = {
     username: string,
     nickname: string,
     avatar: string,
@@ -15,7 +15,7 @@ type userResponseInterface = {
     user_id: string
 }
 
-type fetchGuildResponseSchema = {
+export type fetchGuildResponseSchema = {
     channel_id: string,
     content: string,
     attachments?: Array<attachments>,

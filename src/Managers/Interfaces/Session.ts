@@ -1,6 +1,6 @@
 import type { error } from "./Global"
 
-type fetchSessionsResponseSchema = {
+export type fetchSessionsResponseSchema = {
     session_id: string,
     device_name?: string;
     from?: {

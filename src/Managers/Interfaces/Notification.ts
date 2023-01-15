@@ -1,7 +1,7 @@
 import type { error, notificationTypeInterface, userInfo } from "./Global";
 import type { postResponseSchema } from "./Post";
 
-interface notificationFetchResponseSchema {
+export interface notificationFetchResponseSchema {
     user_id: string,
     target_id: string,
     post_id: string,
