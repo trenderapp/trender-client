@@ -12,6 +12,7 @@ export type attachments = {
     name: string,
     size: number,
     nsfw: boolean,
+    thumbnail: string,
     mimetype: string,
     created_at: Date
 }

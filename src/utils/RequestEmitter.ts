@@ -5,6 +5,7 @@ export type requestParams = {
   token: string;
   websocketurl?: string;
   apiurl?: string;
+  cdnurl?: string;
 };
 
 class RequestEmitter {

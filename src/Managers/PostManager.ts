@@ -13,15 +13,17 @@ import PostUserManager from './PostUserManager';
 
 class PostManager extends RequestEmitter {
   public user: PostUserManager;
+  private cdnurl: string;
 
   constructor(params: requestParams) {
     super(params);
 
     this.user = new PostUserManager(params);
+    this.cdnurl = params?.cdnurl ?? cdnsiteurl;
   }
 
   public file(user_id: string, post_id: string, file_name: string) {
-    return `${cdnsiteurl}/posts/${user_id}/${post_id}/${file_name}`;
+    return `${this.cdnurl}/posts/${user_id}/${post_id}/${file_name}`;
   }
 
   public async uploadFile(files: Blob) {

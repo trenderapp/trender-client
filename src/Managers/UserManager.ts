@@ -11,12 +11,14 @@ import type { profileInformations } from './Interfaces/User';
 class UserManager extends RequestEmitter {
   public block: BlockManager;
   public follow: FollowManager;
+  private cdnurl: string;
 
   constructor(params: requestParams) {
     super(params);
 
     this.follow = new FollowManager(params);
     this.block = new BlockManager(params);
+    this.cdnurl = params?.cdnurl ?? cdnsiteurl;
   }
 
   public flags(bits?: string) {
@@ -24,16 +26,16 @@ class UserManager extends RequestEmitter {
   }
 
   public avatar(user_id: string, avatar: string) {
-    if (avatar === 'base_1.png' || avatar === 'base_2.png') return `${cdnsiteurl}/profile_avatars/${avatar}`;
-    return `${cdnsiteurl}/profile_avatars/${user_id}/${avatar}`;
+    if (avatar === 'base_1.png' || avatar === 'base_2.png') return `${this.cdnurl}/profile_avatars/${avatar}`;
+    return `${this.cdnurl}/profile_avatars/${user_id}/${avatar}`;
   }
 
   public banner(user_id: string, banner: string) {
-    return `${cdnsiteurl}/profile_banners/${user_id}/${banner}`;
+    return `${this.cdnurl}/profile_banners/${user_id}/${banner}`;
   }
 
   public badge(flag_name: string) {
-    return `${cdnsiteurl}/assets/badges/${flag_name}.png`;
+    return `${this.cdnurl}/assets/badges/${flag_name}.png`;
   }
 
   public async profile(nickname: string) {
