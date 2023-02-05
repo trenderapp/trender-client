@@ -1,6 +1,6 @@
 import type { error } from "./Global"
 
-export type userInfo = {
+export interface userInfo {
     user_id: string,
     username: string,
     nickname: string,
@@ -10,12 +10,12 @@ export type userInfo = {
     certified: boolean
 }
 
-export type searchUsers = {
+export interface searchUsers {
     error?: error,
     data?: Array<userInfo>
 }
 
-export type searchUsersParams = {
+export interface searchUsersParams {
     query: string,
     skip?: number,
     limit?: number

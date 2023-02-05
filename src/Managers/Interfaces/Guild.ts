@@ -1,6 +1,6 @@
 import type { error } from "./Global";
 
-export type userInfo = {
+export interface userInfo {
     username: string,
     nickname: string,
     avatar: string,
@@ -12,7 +12,7 @@ export type userInfo = {
     user_id: string
 }
 
-export type fetchGuildResponseSchema = {
+export interface fetchGuildResponseSchema {
     guild_id: string,
     created_at: Date,
     owner?: string,
@@ -24,15 +24,17 @@ export type fetchGuildResponseSchema = {
     }
 }
 
-export type guildCreateResponse = {
-    error?: error,
-    data?: {
-        guild_id: string,
-        users: Array<string>
-    }
+export interface guildCreateReponseInterface {
+    guild_id: string,
+    users: Array<string>
 }
 
-export type guildFetchResponse = {
+export interface guildCreateResponse {
+    error?: error,
+    data?: guildCreateReponseInterface
+}
+
+export interface guildFetchResponse {
     error?: error,
     data?: Array<fetchGuildResponseSchema | []>
 }

@@ -1,5 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { emptyResponse, successResponse } from './Interfaces/Global';
+import type { GlobalInterface } from './Interfaces';
 
 class PushNoficationManager extends RequestEmitter {
   constructor(params: requestParams) {
@@ -10,7 +10,7 @@ class PushNoficationManager extends RequestEmitter {
     const request = await this.postRequest(`/notifications/push`, {
       fcmToken: fcmToken
     });
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
 
     return response;
   }
@@ -19,7 +19,7 @@ class PushNoficationManager extends RequestEmitter {
     const request = await this.deleteRequest(`/notifications/push`, {
       fcmToken: fcmToken
     });
-    const response = request as emptyResponse;
+    const response = request as GlobalInterface.emptyResponse;
 
     return response;
   }

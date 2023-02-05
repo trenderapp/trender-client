@@ -1,6 +1,6 @@
 import type { error } from "./Global"
 
-export type fetchSessionsResponseSchema = {
+export interface fetchSessionsResponseSchema {
     session_id: string,
     device_name?: string;
     from?: {
@@ -10,7 +10,7 @@ export type fetchSessionsResponseSchema = {
     created_at?: Date;
 }
 
-export type sessionFetchResponse = {
+export interface sessionFetchResponse {
     error?: error,
     data?: Array<fetchSessionsResponseSchema | []>
 }

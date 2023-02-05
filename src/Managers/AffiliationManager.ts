@@ -1,5 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { affiliationCreateResponse, affiliationFetchResponse } from './Interfaces/Affiliation';
+import type { AffiliationInterface } from './Interfaces';
 import type { emptyResponse, successResponse } from './Interfaces/Global';
 
 class AffiliationManager extends RequestEmitter {
@@ -16,7 +16,7 @@ class AffiliationManager extends RequestEmitter {
 
   public async generate() {
     const request = await this.postRequest(`/affiliation`);
-    const response = request as affiliationCreateResponse;
+    const response = request as AffiliationInterface.affiliationCreateResponse;
 
     return response;
   }
@@ -30,7 +30,7 @@ class AffiliationManager extends RequestEmitter {
 
   public async fetch() {
     const request = await this.getRequest(`/affiliation`);
-    const response = request as affiliationFetchResponse;
+    const response = request as AffiliationInterface.affiliationFetchResponse;
 
     return response;
   }

@@ -1,14 +1,6 @@
 import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { emptyResponse, paginationParams, successResponse, uploadFiles } from './Interfaces/Global';
-import type {
-  createPostParameters,
-  createPostReponse,
-  pinedPostResponse,
-  postResponse,
-  postResponseSchema
-} from './Interfaces/Post';
-import type { searchUsers } from './Interfaces/Search';
+import type { GlobalInterface, PostInterface, SearchInterface } from './Interfaces';
 import PostUserManager from './PostUserManager';
 
 class PostManager extends RequestEmitter {
@@ -32,63 +24,63 @@ class PostManager extends RequestEmitter {
     formdata.append('posts', files);
 
     const request = await this.uploadFiles(`/upload?type=posts`, formdata);
-    const response = request as uploadFiles;
+    const response = request as GlobalInterface.uploadFiles;
 
     return response;
   }
 
-  public async create(options: createPostParameters) {
+  public async create(options: PostInterface.createPostParameters) {
     const request = await this.postRequest(`/posts`, options);
-    const response = request as createPostReponse;
+    const response = request as PostInterface.createPostReponse;
 
     return response;
   }
 
   public async delete(target_id: string) {
     const request = await this.deleteRequest(`/posts/${target_id}`);
-    const response = request as emptyResponse;
+    const response = request as GlobalInterface.emptyResponse;
 
     return response;
   }
 
   public async unPin(target_id: string) {
     const request = await this.deleteRequest(`/posts/${target_id}/pin`);
-    const response = request as emptyResponse;
+    const response = request as GlobalInterface.emptyResponse;
 
     return response;
   }
 
   public async pin(target_id: string) {
     const request = await this.postRequest(`/posts/${target_id}/pin`, {});
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
 
     return response;
   }
 
   public async getPinPost(target_id: string) {
     const request = await this.getRequest(`/posts/${target_id}/pin`);
-    const response = request as pinedPostResponse;
+    const response = request as PostInterface.pinedPostResponse;
 
     return response;
   }
 
   public async like(target_id: string) {
     const request = await this.postRequest(`/posts/${target_id}/likes`, {});
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
 
     return response;
   }
 
   public async unlike(target_id: string) {
     const request = await this.deleteRequest(`/posts/${target_id}/likes`);
-    const response = request as emptyResponse;
+    const response = request as GlobalInterface.emptyResponse;
 
     return response;
   }
 
   public async getLikesPost(target_id: string) {
     const request = await this.getRequest(`/posts/${target_id}/likes`);
-    const response = request as searchUsers;
+    const response = request as SearchInterface.searchUsers;
 
     return response;
   }
@@ -98,7 +90,7 @@ class PostManager extends RequestEmitter {
       reason: reason,
       description: description
     });
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
 
     return response;
   }
@@ -106,25 +98,25 @@ class PostManager extends RequestEmitter {
   public async fetchOne(post_id: string) {
     const request = await this.getRequest(`/posts/${post_id}`);
 
-    const response = request as postResponseSchema;
+    const response = request as PostInterface.postResponseSchema;
 
     return response;
   }
 
-  public async comments(post_id: string, options?: paginationParams) {
+  public async comments(post_id: string, options?: GlobalInterface.paginationParams) {
     const request = await this.getRequest(
       `/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
     );
 
-    const response = request as postResponse;
+    const response = request as PostInterface.postResponse;
 
     return response;
   }
 
-  public async fetch(options?: paginationParams) {
+  public async fetch(options?: GlobalInterface.paginationParams) {
     const request = await this.getRequest(`/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
 
-    const response = request as postResponse;
+    const response = request as PostInterface.postResponse;
 
     return response;
   }

@@ -1,12 +1,12 @@
 import type { error, attachments, embeds } from "./Global"
 import type { postTypes } from "./Post"
 
-export type createParams = {
+export interface createParams {
     content: string,
     attachments?: Array<attachments>
 }
 
-export type userResponseInterface = {
+export interface userResponseInterface {
     username: string,
     nickname: string,
     avatar: string,
@@ -15,7 +15,7 @@ export type userResponseInterface = {
     user_id: string
 }
 
-export type fetchGuildResponseSchema = {
+export interface fetchGuildResponseSchema {
     channel_id: string,
     content: string,
     attachments?: Array<attachments>,
@@ -28,24 +28,26 @@ export type fetchGuildResponseSchema = {
     from: userResponseInterface
 }
 
-export type messageCreateResponse = {
+export interface messageCreateResponse {
     error?: error,
     data?: fetchGuildResponseSchema
 }
 
-export type messageFetchResponse = {
+export interface messageFetchResponse {
     error?: error,
     data?: Array<fetchGuildResponseSchema>
 }
 
-export type unreadFetchResponse = {
+export interface unreadFetchResponseInterface {
+    /**
+     * ID du dernier message lu
+     */
+    message_id: string,
+    user_id: string,
+    channel_id: string,
+}
+
+export interface unreadFetchResponse {
     error?: error,
-    data?: Array<{
-        /**
-         * ID du dernier message lu
-         */
-        message_id: string,
-        user_id: string,
-        channel_id: string,
-    } | []>
+    data?: Array<unreadFetchResponseInterface | []>
 }

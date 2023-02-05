@@ -4,13 +4,15 @@ import SessionManager from './Managers/SessionManager';
 import UserManager from './Managers/UserManager';
 import UserFlags from './Permissions/Flags';
 import RequestEmitter, { requestParams } from './utils/RequestEmitter';
-import type { myInformations } from './Managers/Interfaces/Me';
+import type { MeInterface } from './Managers/Interfaces';
 import MessageManager from './Managers/MessageManager';
 import WebSocketRoutes from './Permissions/WebSocket';
 import AffiliationManager from './Managers/AffiliationManager';
 import PushNoficationManager from './Managers/PushNoficationManager';
 import ExploreManager from './Managers/ExploreManager';
 import NotificationManager from './Managers/NotificationManager';
+
+export * from "./Managers/Interfaces";
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
@@ -44,7 +46,7 @@ class Client extends RequestEmitter {
     public async informations() {
         const request = await this.getRequest("/users/me/informations");
 
-        const response = request as myInformations;
+        const response = request as MeInterface.myInformations;
 
         return response;
     }

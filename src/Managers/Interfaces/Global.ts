@@ -1,11 +1,11 @@
-export type error = {
+export interface error {
     message: string,
     code: number
 }
 
 export type notificationTypeInterface = "likes" | "mentions" | "follows";
 
-export type attachments = {
+export interface attachments {
     height?: number,
     width?: number,
     id: string,
@@ -17,7 +17,7 @@ export type attachments = {
     created_at: Date
 }
 
-export type userInfo = {
+export interface userInfo {
     user_id: string,
     nickname: string,
     username: string,
@@ -33,7 +33,7 @@ export type userInfo = {
     link: string
 }
 
-export type embeds = {
+export interface embeds {
     /**0 = text only | 1 = image (include gif) | 2 = video 
      * @default 0
     */
@@ -46,31 +46,35 @@ export type embeds = {
     attachments?: string
 }
 
-export type emptyResponse = {
+export interface emptyResponse {
     error?: error
 }
 
-export type successResponse = {
-    error?: error,
-    data?: {
-        message: string,
-        code: 200
-    }
+export interface successReponseInterface {
+    message: string,
+    code: 200
 }
 
-export type paginationParams = {
+export interface successResponse {
+    error?: error,
+    data?: successReponseInterface
+}
+
+export interface paginationParams {
     skip?: number | string,
     limit?: number | string
 }
 
-export type uploadFiles = {
+export interface uploadFilesResponse {
+    request_id: string,
+    /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
+    type: 0 | 1 | 2 | 3 | 4,
+    attachments: Array<attachments>
+}
+
+export interface uploadFiles {
     error?: error,
-    data?: {
-        request_id: string,
-        /**0 = text only | 1 = image (include gif) | 2 = video | 3 = audio | 4 = others */
-        type: 0 | 1 | 2 | 3 | 4,
-        attachments: Array<attachments>
-    }
+    data?: uploadFilesResponse
 }
 
 export interface pollInterface {

@@ -1,6 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { followInformations, followListInformations } from './Interfaces/Follow';
-import type { paginationParams } from './Interfaces/Global';
+import type { FollowInterface, GlobalInterface } from './Interfaces';
 
 class FollowManager extends RequestEmitter {
   constructor(params: requestParams) {
@@ -9,14 +8,14 @@ class FollowManager extends RequestEmitter {
 
   public async delete(target_id: string) {
     const request = await this.deleteRequest(`/users/${target_id}/follows`);
-    const response = request as followInformations;
+    const response = request as FollowInterface.followInformations;
 
     return response;
   }
 
   public async create(target_id: string) {
     const request = await this.postRequest(`/users/${target_id}/follows`, {});
-    const response = request as followInformations;
+    const response = request as FollowInterface.followInformations;
 
     return response;
   }
@@ -26,7 +25,7 @@ class FollowManager extends RequestEmitter {
       follow_id: follow_id
     });
 
-    const response = request as followInformations;
+    const response = request as FollowInterface.followInformations;
 
     return response;
   }
@@ -34,27 +33,27 @@ class FollowManager extends RequestEmitter {
   public async unacceptedList() {
     const request = await this.getRequest('/users/me/follows');
 
-    const response = request as followListInformations;
+    const response = request as FollowInterface.followListInformations;
 
     return response;
   }
 
-  public async follows(nickname: string, options?: paginationParams) {
+  public async follows(nickname: string, options?: GlobalInterface.paginationParams) {
     const request = await this.getRequest(
       `/users/${nickname}/follows?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
     );
 
-    const response = request as followListInformations;
+    const response = request as FollowInterface.followListInformations;
 
     return response;
   }
 
-  public async followers(nickname: string, options?: paginationParams) {
+  public async followers(nickname: string, options?: GlobalInterface.paginationParams) {
     const request = await this.getRequest(
       `/users/${nickname}/followers?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
     );
 
-    const response = request as followListInformations;
+    const response = request as FollowInterface.followListInformations;
 
     return response;
   }

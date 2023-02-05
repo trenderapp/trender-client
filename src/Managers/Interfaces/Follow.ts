@@ -1,22 +1,24 @@
 import type { error } from "./Global"
 
-export type followInformations = {
+export interface followInformations {
     error?: error
 }
 
-export type followListInformations = {
+export interface followInformationsResponse {
+    follow_id?: string, 
+    user_id: string, 
+    target_id: string, 
+    created_at: Date,
+    description?: string,
+    accepted: boolean, 
+    nickname: string, 
+    username: string, 
+    avatar: string, 
+    is_private: boolean, 
+    verified: boolean
+}
+
+export interface followListInformations {
     error?: error,
-    data?: Array<{
-        follow_id?: string, 
-        user_id: string, 
-        target_id: string, 
-        created_at: Date,
-        description?: string,
-        accepted: boolean, 
-        nickname: string, 
-        username: string, 
-        avatar: string, 
-        is_private: boolean, 
-        verified: boolean
-    }>
+    data?: Array<followInformationsResponse>
 }

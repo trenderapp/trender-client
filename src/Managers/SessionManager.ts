@@ -1,6 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { emptyResponse, successResponse } from './Interfaces/Global';
-import type { sessionFetchResponse } from './Interfaces/Session';
+import type { GlobalInterface, SessionInterface } from './Interfaces';
 
 class SessionManager extends RequestEmitter {
   constructor(params: requestParams) {
@@ -12,7 +11,7 @@ class SessionManager extends RequestEmitter {
       password: params.password
     });
 
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
     return response;
   }
 
@@ -21,14 +20,14 @@ class SessionManager extends RequestEmitter {
       password: password
     });
 
-    const response = request as emptyResponse;
+    const response = request as GlobalInterface.emptyResponse;
     return response;
   }
 
   public async fetch() {
     const request = await this.getRequest(`/sessions`);
 
-    const response = request as sessionFetchResponse;
+    const response = request as SessionInterface.sessionFetchResponse;
 
     return response;
   }

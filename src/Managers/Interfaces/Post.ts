@@ -5,30 +5,32 @@ import type { attachments, embeds, error, givewayInterface, pollInterface, userI
 export type postTypes = 0 | 1 | 2 | 3 | 4;
 
 export interface createPostParameters {
-    request_id?: string,
-    /**
-     * Use it to create a comment
-     */
-    attached_post_id?: string,
-    content: string,
-    attachments?: Array<attachments>
+  request_id?: string,
+  /**
+   * Use it to create a comment
+   */
+  attached_post_id?: string,
+  content: string,
+  attachments?: Array<attachments>
+}
+
+export interface createPostResponseInterface {
+  post_id: string,
+  attached_post_id?: string,
+  attachments?: Array<attachments>,
+  embeds: Array<embeds>,
+  mentions: Array<string>,
+  hashtags: Array<string>,
+  content: postTypes,
+  type: 0 | 1 | 2 | 3 | 4,
+  // poll?: pollInterface,
+  // giveway?: givewayInterface,
+  created_at: Date
 }
 
 export interface createPostReponse {
-    error?: error,
-    data?: {
-        post_id: string,
-        attached_post_id?: string,
-        attachments?: Array<attachments>,
-        embeds: Array<embeds>,
-        mentions: Array<string>,
-        hashtags: Array<string>,
-        content: postTypes,
-        type: 0 | 1 | 2 | 3 | 4,
-        // poll?: pollInterface,
-        // giveway?: givewayInterface,
-        created_at: Date
-    }
+  error?: error,
+  data?: createPostResponseInterface
 }
 
 export interface postResponseSchema {
@@ -61,24 +63,24 @@ export interface pinedPostResponse {
 }
 
 export interface postInterface {
-    post_id?: string,
-    user_id?: string,
-    attached_post_id?: string,
-    attachments?: Array<attachments>,
-    description: string,
-    embeds?: Array<embeds>,
-    type: postTypes,
-    poll?: {
-      poll_id: string,
-      time: {
-        days: number,
-        hours: number,
-        minutes: number,
-      },
-      options: Array<pollInterface>,
-    };
-    giveway?: givewayInterface,
-    created_at?: Date,
-    likes: number,
-    comments: number
+  post_id?: string,
+  user_id?: string,
+  attached_post_id?: string,
+  attachments?: Array<attachments>,
+  description: string,
+  embeds?: Array<embeds>,
+  type: postTypes,
+  poll?: {
+    poll_id: string,
+    time: {
+      days: number,
+      hours: number,
+      minutes: number,
+    },
+    options: Array<pollInterface>,
+  };
+  giveway?: givewayInterface,
+  created_at?: Date,
+  likes: number,
+  comments: number
 }

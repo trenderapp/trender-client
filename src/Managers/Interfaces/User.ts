@@ -1,6 +1,6 @@
 import type { error } from "./Global"
 
-export type userInfo = {
+export interface userInfo {
     user_id: string,
     username: string,
     nickname: string,
@@ -16,15 +16,17 @@ export type userInfo = {
     created_at: Date
 }
 
-export type profileInformations = {
-    error?: error,
-    data?: {
-        user_info: userInfo,
-        subscriptions?: {
-            total: number
-        },
-        subscribers?: {
-            total: number
-        }
+export interface profileInformationsInterface {
+    user_info: userInfo,
+    subscriptions?: {
+        total: number
+    },
+    subscribers?: {
+        total: number
     }
+}
+
+export interface profileInformations {
+    error?: error,
+    data?: profileInformationsInterface
 }

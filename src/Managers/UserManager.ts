@@ -3,10 +3,7 @@ import { cdnsiteurl } from '../utils/Constante';
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import BlockManager from './BlockManager';
 import FollowManager from './FollowManager';
-import type { successResponse, uploadFiles } from './Interfaces/Global';
-import type { editInformationsParams, editInformationsResponse } from './Interfaces/Me';
-import type { searchUsers, searchUsersParams } from './Interfaces/Search';
-import type { profileInformations } from './Interfaces/User';
+import type { GlobalInterface, MeInterface, SearchInterface, UserInterface } from './Interfaces';
 
 class UserManager extends RequestEmitter {
   public block: BlockManager;
@@ -41,7 +38,7 @@ class UserManager extends RequestEmitter {
   public async profile(nickname: string) {
     const request = await this.getRequest(`/users/${nickname}`);
 
-    const response = request as profileInformations;
+    const response = request as UserInterface.profileInformations;
     return response;
   }
 
@@ -51,15 +48,15 @@ class UserManager extends RequestEmitter {
       description: description
     });
 
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
     return response;
   }
 
-  public async search(query: string, params?: searchUsersParams) {
+  public async search(query: string, params?: SearchInterface.searchUsersParams) {
     const request = await this.getRequest(
       `/users/search/all?query=${query}&skip=${params?.skip ?? 0}&limit=${params?.limit ?? 30}`
     );
-    const response = request as searchUsers;
+    const response = request as SearchInterface.searchUsers;
 
     return response;
   }
@@ -72,7 +69,7 @@ class UserManager extends RequestEmitter {
     formdata.append('avatar', files);
 
     const request = await this.uploadFiles(`/upload?type=avatar`, formdata);
-    const response = request as uploadFiles;
+    const response = request as GlobalInterface.uploadFiles;
 
     return response;
   }
@@ -83,15 +80,15 @@ class UserManager extends RequestEmitter {
     formdata.append('banner', files);
 
     const request = await this.uploadFiles(`/upload?type=banner`, formdata);
-    const response = request as uploadFiles;
+    const response = request as GlobalInterface.uploadFiles;
 
     return response;
   }
 
-  public async edit(options: editInformationsParams) {
+  public async edit(options: MeInterface.editInformationsParams) {
     const request = await this.patchRequest(`/users/me`, options);
 
-    const response = request as editInformationsResponse;
+    const response = request as MeInterface.editInformationsResponse;
 
     return response;
   }
@@ -99,7 +96,7 @@ class UserManager extends RequestEmitter {
   public async logout() {
     const request = await this.postRequest(`/logout`);
 
-    const response = request as successResponse;
+    const response = request as GlobalInterface.successResponse;
 
     return response;
   }
