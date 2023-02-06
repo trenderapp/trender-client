@@ -34,22 +34,23 @@ export interface createPostReponse {
 }
 
 export interface postResponseSchema {
-  post_id?: string,
-  attached_post_id?: string,
+  post_id: string,
   content: string,
-  attachments?: Array<attachments>,
+  locale: ISO_639_CODE_LIST,
   type: postTypes,
-  embeds?: Array<embeds>,
-  poll?: pollInterface
+  attachments: Array<attachments> | [],
+  attached_post_id?: string,
+  embeds: Array<embeds> | [],
+  poll: pollInterface
   giveway?: givewayInterface,
-  locale?: ISO_639_CODE_LIST,
-  mentions?: Array<userInfo>,
-  hashtags?: Array<string>,
-  created_at?: Date,
+  mentions: Array<userInfo> | [],
+  hashtags: Array<string> | [],
+  created_at: Date,
   from: userInfo,
   likes?: number,
   liked?: number,
-  comments?: number
+  comments?: number,
+  views: number
 }
 
 export interface fetchOnePost {

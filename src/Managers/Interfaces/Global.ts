@@ -87,7 +87,7 @@ export interface pollInterface {
     options: Array<{
         name: string;
         option_id: string
-    }>
+    }> | []
 }
   
 
