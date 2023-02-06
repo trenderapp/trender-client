@@ -52,6 +52,11 @@ export interface postResponseSchema {
   comments?: number
 }
 
+export interface fetchOnePost {
+  error?: error,
+  data?: postResponseSchema
+}
+
 export interface postResponse {
   error?: error,
   data?: Array<postResponseSchema>
