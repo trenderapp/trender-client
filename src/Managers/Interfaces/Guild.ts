@@ -1,15 +1,16 @@
-import type { error } from "./Global";
+import type { error, premium_type } from "./Global";
 
 export interface userInfo {
     username: string,
     nickname: string,
     avatar: string,
     accent_color: string,
+    premium_type: premium_type,
     certified: boolean,
     flags: number,
     is_private: boolean,
     created_at: Date,
-    user_id: string
+    user_id: string,
 }
 
 export interface fetchGuildResponseSchema {

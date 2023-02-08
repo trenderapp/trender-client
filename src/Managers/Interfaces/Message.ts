@@ -1,4 +1,4 @@
-import type { error, attachments, embeds } from "./Global"
+import type { error, attachments, embeds, premium_type } from "./Global"
 import type { postTypes } from "./Post"
 
 export interface createParams {
@@ -10,6 +10,7 @@ export interface userResponseInterface {
     username: string,
     nickname: string,
     avatar: string,
+    premium_type: premium_type,
     certified: boolean,
     is_private: boolean,
     user_id: string

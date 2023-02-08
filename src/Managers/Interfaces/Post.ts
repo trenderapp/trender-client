@@ -48,7 +48,7 @@ export interface postResponseSchema {
   created_at: Date,
   from: userInfo,
   likes?: number,
-  liked?: number,
+  liked?: boolean,
   comments?: number,
   views: number
 }

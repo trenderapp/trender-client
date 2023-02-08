@@ -5,16 +5,23 @@ export interface error {
 
 export type notificationTypeInterface = "likes" | "mentions" | "follows";
 
+/**
+*  0 = none | 1 = normal (2.99€) | 2 = shared with others projects (4.99€) | 3 = premium 1 + 2 (7.99€)
+*/
+export type premium_type = 0 | 1 | 2 | 3;
+
 export interface attachments {
-    height?: number,
-    width?: number,
-    id: string,
-    name: string,
-    size: number,
-    nsfw: boolean,
-    thumbnail: string,
-    mimetype: string,
-    created_at: Date
+    height?: number;
+    width?: number;
+    id: string;
+    name: string;
+    size: number;
+    mimetype: string;
+    created_at: Date;
+    nsfw: boolean;
+    thumbnail?: string;
+    accent_color?: string;
+    non_animated?: string;
 }
 
 export interface userInfo {
