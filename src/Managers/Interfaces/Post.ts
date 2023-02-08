@@ -47,9 +47,9 @@ export interface postResponseSchema {
   hashtags: Array<string> | [],
   created_at: Date,
   from: userInfo,
-  likes?: number,
-  liked?: boolean,
-  comments?: number,
+  likes: number,
+  liked: boolean,
+  comments: number,
   views: number
 }
 
