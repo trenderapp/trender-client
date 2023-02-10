@@ -8,6 +8,9 @@ export interface myInformationInterface {
     avatar: string,
     token: string,
     locale: ISO_639_CODE_LIST
+    session_id: string;
+    username: string;
+    nsfw_filter?: boolean;
 }
 
 export interface myInformations {
