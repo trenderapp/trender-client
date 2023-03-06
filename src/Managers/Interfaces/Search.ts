@@ -16,7 +16,7 @@ export interface searchUsers {
 }
 
 export interface searchUsersParams {
-    query: string,
+    pagination_key?: string,
     skip?: number,
     limit?: number
 }

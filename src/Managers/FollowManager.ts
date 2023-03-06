@@ -38,20 +38,34 @@ class FollowManager extends RequestEmitter {
     return response;
   }
 
-  public async follows(nickname: string, options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(
-      `/users/${nickname}/follows?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
-    );
+  public async follows(nickname: string, params?: GlobalInterface.paginationParams) {
+
+    let _url = `/users/${nickname}/follows`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
 
     const response = request as FollowInterface.followListInformations;
 
     return response;
   }
 
-  public async followers(nickname: string, options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(
-      `/users/${nickname}/followers?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
-    );
+  public async followers(nickname: string, params?: GlobalInterface.paginationParams) {
+
+    let _url = `/users/${nickname}/followers`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
 
     const response = request as FollowInterface.followListInformations;
 

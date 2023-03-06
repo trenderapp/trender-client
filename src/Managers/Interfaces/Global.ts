@@ -68,8 +68,9 @@ export interface successResponse {
 }
 
 export interface paginationParams {
-    skip?: number | string,
-    limit?: number | string
+    pagination_key?: string,
+    skip?: number,
+    limit?: number
 }
 
 export interface uploadFilesResponse {

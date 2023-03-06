@@ -30,6 +30,7 @@ class PostManager extends RequestEmitter {
   }
 
   public async create(options: PostInterface.createPostParameters) {
+    
     const request = await this.postRequest(`/posts`, options);
     const response = request as PostInterface.createPostReponse;
 
@@ -103,19 +104,34 @@ class PostManager extends RequestEmitter {
     return response;
   }
 
-  public async comments(post_id: string, options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(
-      `/posts/${post_id}/comments?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
-    );
+  public async comments(post_id: string, params?: GlobalInterface.paginationParams) {
+
+    let _url = `/posts/${post_id}/comments`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
 
     const response = request as PostInterface.postResponse;
 
     return response;
   }
 
-  public async fetch(options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(`/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`);
+  public async fetch(params?: GlobalInterface.paginationParams) {
 
+    let _url = `/posts`;
+    const parameters = []
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
     const response = request as PostInterface.postResponse;
 
     return response;

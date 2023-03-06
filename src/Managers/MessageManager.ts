@@ -16,11 +16,17 @@ class MessageManager extends RequestEmitter {
     return response;
   }
 
-  public async fetch(channel_id: string, options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(
-      `/messages/${channel_id}?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 50}`
-    );
+  public async fetch(channel_id: string, params?: GlobalInterface.paginationParams) {
 
+    let _url = `/users/${channel_id}`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
     const response = request as MessageInterface.messageFetchResponse;
 
     return response;

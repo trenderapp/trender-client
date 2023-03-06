@@ -60,7 +60,8 @@ export interface fetchOnePost {
 
 export interface postResponse {
   error?: error,
-  data?: Array<postResponseSchema>
+  data?: Array<postResponseSchema>,
+  pagination_key?: string
 }
 
 export interface pinedPostResponse {
@@ -69,8 +70,8 @@ export interface pinedPostResponse {
 }
 
 export interface postInterface {
-  post_id?: string,
-  user_id?: string,
+  post_id: string,
+  user_id: string,
   attached_post_id?: string,
   attachments?: Array<attachments>,
   description: string,

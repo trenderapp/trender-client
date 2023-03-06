@@ -7,7 +7,17 @@ class NotificationManager extends RequestEmitter {
   }
 
   public async fetch(params?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(`/notifications?skip=${params?.skip ?? 0}&limit=${params?.limit ?? 20}`);
+
+    let _url = `/notifications`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
+
     const response = request as NotificationInterface.notificationFetchResponse;
 
     return response;

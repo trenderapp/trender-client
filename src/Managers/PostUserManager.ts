@@ -6,10 +6,17 @@ class PostUserManager extends RequestEmitter {
     super(params);
   }
 
-  public async fetch(nickname: string, options?: GlobalInterface.paginationParams) {
-    const request = await this.getRequest(
-      `/users/${nickname}/posts?skip=${options?.skip ?? 0}&limit=${options?.limit ?? 30}`
-    );
+  public async fetch(nickname: string, params?: GlobalInterface.paginationParams) {
+
+    let _url = `/users/${nickname}/posts`;
+    const parameters = [];
+
+    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
+    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.toString());
 
     const response = request as PostInterface.postResponse;
 
