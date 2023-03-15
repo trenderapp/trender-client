@@ -99,7 +99,7 @@ class PostManager extends RequestEmitter {
   public async fetchOne(post_id: string) {
     const request = await this.getRequest(`/posts/${post_id}`);
 
-    const response = request as PostInterface.postResponseSchema;
+    const response = request as PostInterface.fetchOnePost;
 
     return response;
   }

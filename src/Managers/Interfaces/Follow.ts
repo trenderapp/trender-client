@@ -5,7 +5,7 @@ export interface followInformations {
 }
 
 export interface followInformationsResponse {
-    follow_id?: string, 
+    follow_id: string, 
     user_id: string, 
     target_id: string, 
     created_at: Date,
