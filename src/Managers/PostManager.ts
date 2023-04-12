@@ -136,6 +136,27 @@ class PostManager extends RequestEmitter {
 
     return response;
   }
+
+  public async search(params?: PostInterface.searchParams) {
+    let _url = `/posts/search`;
+
+    const parameters = []
+
+    if(params?.after) parameters.push(`after=${params.after.toString()}`);
+    if(params?.before) parameters.push(`before=${params.before.toString()}`);
+    if(params?.query) parameters.push(`query=${encodeURIComponent(params.query.toString())}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key.toString()}`);
+    if(params?.from) parameters.push(`from=${params.from.toString()}`);
+    if(params?.locale) parameters.push(`locale=${params.locale.toString()}`);
+    if(params?.type) parameters.push(`type=${params.type.toString()}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
+    const response = request as PostInterface.postResponse;
+
+    return response;
+  }
 }
 
 export default PostManager;
