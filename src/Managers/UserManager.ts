@@ -52,18 +52,15 @@ class UserManager extends RequestEmitter {
     return response;
   }
 
-  public async search(query: string, params?: SearchInterface.searchUsersParams) {
+  public async search(query: string, pagination_key?: string) {
     let _url = `/users/search/all`;
     const parameters = []
 
-    parameters.push(`query=${query}`);
-    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
-    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
-    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
-    if(parameters.length > 0) _url = _url.concat("?")
+    parameters.push(`query=${encodeURIComponent(query)}`);
+    if(pagination_key) parameters.push(`pagination_key=${pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?");
 
     const request = await this.getRequest(_url.concat(parameters.join("&")));
-
     const response = request as SearchInterface.searchUsers;
 
     return response;

@@ -7,16 +7,12 @@ export interface userInfo {
     description: string,
     avatar: string,
     flags: number,
-    certified: boolean
+    certified: boolean,
+    created_at: string
 }
 
 export interface searchUsers {
     error?: error,
-    data?: Array<userInfo>
-}
-
-export interface searchUsersParams {
-    pagination_key?: string,
-    skip?: number,
-    limit?: number
+    data?: Array<userInfo>,
+    pagination_key?: string
 }
