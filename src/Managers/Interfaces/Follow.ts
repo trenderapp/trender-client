@@ -20,5 +20,6 @@ export interface followInformationsResponse {
 
 export interface followListInformations {
     error?: error,
-    data?: Array<followInformationsResponse>
+    data?: Array<followInformationsResponse>,
+    pagination_key?: string
 }

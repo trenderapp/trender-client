@@ -43,8 +43,6 @@ class FollowManager extends RequestEmitter {
     let _url = `/users/${nickname}/follows`;
     const parameters = [];
 
-    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
-    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
     if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
     if(parameters.length > 0) _url = _url.concat("?")
 
@@ -60,8 +58,6 @@ class FollowManager extends RequestEmitter {
     let _url = `/users/${nickname}/followers`;
     const parameters = [];
 
-    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
-    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
     if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
     if(parameters.length > 0) _url = _url.concat("?")
 

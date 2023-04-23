@@ -16,5 +16,6 @@ export interface notificationFetchResponseSchema {
 
 export interface notificationFetchResponse {
     error?: error,
-    data?: Array<notificationFetchResponseSchema>
+    data?: Array<notificationFetchResponseSchema>,
+    pagination_key?: string
 }
