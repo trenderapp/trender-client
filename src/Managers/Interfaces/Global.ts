@@ -37,7 +37,8 @@ export interface userInfo {
     accent_color: string,
     allow_mp: boolean,
     created_at: string,
-    link: string
+    link: string;
+    pined_post?: string;
 }
 
 export interface embeds {
