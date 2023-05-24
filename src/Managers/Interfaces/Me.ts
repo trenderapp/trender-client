@@ -11,6 +11,8 @@ export interface myInformationInterface {
     session_id: string;
     username: string;
     nsfw_filter?: boolean;
+    banner?: string;
+    accent_color?: string;
 }
 
 export interface myInformations {
