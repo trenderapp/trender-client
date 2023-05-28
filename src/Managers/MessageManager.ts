@@ -18,7 +18,7 @@ class MessageManager extends RequestEmitter {
 
   public async fetch(channel_id: string, params?: GlobalInterface.paginationParams) {
 
-    let _url = `/users/${channel_id}`;
+    let _url = `/messages/${channel_id}`;
     const parameters = [];
 
     if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
