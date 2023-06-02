@@ -12,9 +12,10 @@ export interface userInfo {
     accent_color: string,
     flags: number,
     is_private: boolean,
-    allow_mp: boolean,
+    allow_dm: boolean,
     pined_post?: string,
-    created_at: Date
+    created_at: Date,
+    trust_factor: number
 }
 
 export interface profileInformationsInterface {

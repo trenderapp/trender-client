@@ -35,7 +35,7 @@ export interface userInfo {
     certified: boolean,
     banner: string,
     accent_color: string,
-    allow_mp: boolean,
+    allow_dm: boolean,
     created_at: string,
     link: string;
     pined_post?: string;

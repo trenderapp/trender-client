@@ -25,17 +25,18 @@ export interface editInformationsParams {
     username?: string,
     description?: string,
     is_private?: boolean,
-    private_messages?: boolean,
+    allow_dm?: boolean,
     link?: string,
     avatar?: attachments,
     banner?: attachments,
     locale?: ISO_639_CODE_LIST,
-    language_spoken?: Array<ISO_639_CODE_LIST>
+    language_spoken?: Array<ISO_639_CODE_LIST>,
+    nsfw_filter?: boolean
 }
 
 export interface editInformationsResponseInterface {
     is_private?: boolean,
-    private_messages?: boolean,
+    allow_dm?: boolean,
     description?: string,
     nickname?: string,
     username?: string,
@@ -43,7 +44,8 @@ export interface editInformationsResponseInterface {
     accent_color?: string,
     banner?: string,
     locale?: ISO_639_CODE_LIST,
-    language_spoken?: Array<ISO_639_CODE_LIST>
+    language_spoken?: Array<ISO_639_CODE_LIST>,
+    nsfw_filter?: boolean
 }
 
 export interface editInformationsResponse {
