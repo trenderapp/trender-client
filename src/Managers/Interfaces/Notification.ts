@@ -8,7 +8,7 @@ export interface notificationFetchResponseSchema {
     notification_type: notificationTypeInterface,
     notification_id: string,
     created_at: Date,
-    read: boolean,
+    readed?: boolean,
     post: postResponseSchema,
     from: userInfo,
     mentions: userInfo[] | []

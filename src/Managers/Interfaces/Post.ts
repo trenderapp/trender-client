@@ -21,8 +21,8 @@ export interface createPostResponseInterface {
   embeds: Array<embeds>,
   mentions: Array<string>,
   hashtags: Array<string>,
-  content: postTypes,
-  type: 0 | 1 | 2 | 3 | 4,
+  content: string,
+  type: postTypes,
   // poll?: pollInterface,
   // giveway?: givewayInterface,
   created_at: Date
@@ -69,28 +69,7 @@ export interface pinedPostResponse {
   data?: postResponseSchema
 }
 
-export interface postInterface {
-  post_id: string,
-  user_id: string,
-  attached_post_id?: string,
-  attachments?: Array<attachments>,
-  description: string,
-  embeds?: Array<embeds>,
-  type: postTypes,
-  poll?: {
-    poll_id: string,
-    time: {
-      days: number,
-      hours: number,
-      minutes: number,
-    },
-    options: Array<pollInterface>,
-  };
-  giveway?: givewayInterface,
-  created_at?: Date,
-  likes: number,
-  comments: number
-}
+export type postInterface = postResponseSchema;
 
 export interface searchParams {
   from?: string,
