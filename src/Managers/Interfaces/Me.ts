@@ -10,6 +10,7 @@ export interface myInformationInterface {
     locale: ISO_639_CODE_LIST
     session_id: string;
     username: string;
+    flags: number;
     nsfw_filter?: boolean;
     banner?: string;
     accent_color?: string;
