@@ -55,6 +55,7 @@ export interface postResponseSchema {
   from: userInfo,
   likes: number,
   liked: boolean,
+  shares: number;
   comments: number,
   views: number
 }

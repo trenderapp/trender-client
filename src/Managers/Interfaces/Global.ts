@@ -3,7 +3,7 @@ export interface error {
     code: number
 }
 
-export type notificationTypeInterface = "likes" | "mentions" | "follows";
+export type notificationTypeInterface = "likes" | "mentions" | "follows" | "shares";
 
 /**
 *  0 = none | 1 = normal (2.99€) | 2 = shared with others projects (4.99€) | 3 = premium 1 + 2 (7.99€)
