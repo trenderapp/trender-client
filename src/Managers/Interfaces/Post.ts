@@ -10,6 +10,10 @@ export interface createPostParameters {
    * Use it to create a comment
    */
   attached_post_id?: string,
+  /**
+   * Use it to create a share
+   */
+  shared_post_id?: string,
   content: string,
   attachments?: Array<attachments>
 }
@@ -17,6 +21,7 @@ export interface createPostParameters {
 export interface createPostResponseInterface {
   post_id: string,
   attached_post_id?: string,
+  shared_post_id?: string,
   attachments?: Array<attachments>,
   embeds: Array<embeds>,
   mentions: Array<string>,
@@ -40,6 +45,7 @@ export interface postResponseSchema {
   type: postTypes,
   attachments: Array<attachments> | [],
   attached_post_id?: string,
+  shared_post_id?: string,
   embeds: Array<embeds> | [],
   poll: pollInterface
   giveway?: givewayInterface,
