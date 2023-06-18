@@ -11,3 +11,5 @@ export * as PostInterface from "./Post";
 export * as SearchInterface from "./Search";
 export * as SessionInterface from "./Session";
 export * as UserInterface from "./User";
+export * as SubscriptionInterface from "./Subscription";
+export * as CustomSubscriptionInterface from "./CustomSubscription";

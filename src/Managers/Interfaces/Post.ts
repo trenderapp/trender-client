@@ -5,85 +5,86 @@ import type { attachments, embeds, error, givewayInterface, pollInterface, premi
 export type postTypes = 0 | 1 | 2 | 3 | 4;
 
 export interface createPostParameters {
-  request_id?: string,
+  request_id?: string;
   /**
    * Use it to create a comment
    */
-  attached_post_id?: string,
+  attached_post_id?: string;
   /**
    * Use it to create a share
    */
-  shared_post_id?: string,
-  content: string,
+  shared_post_id?: string;
+  content: string;
   attachments?: Array<attachments>
 }
 
 export interface createPostResponseInterface {
-  post_id: string,
-  attached_post_id?: string,
-  shared_post_id?: string,
-  attachments?: Array<attachments>,
-  embeds: Array<embeds>,
-  mentions: Array<string>,
-  hashtags: Array<string>,
-  content: string,
-  type: postTypes,
-  // poll?: pollInterface,
-  // giveway?: givewayInterface,
+  post_id: string;
+  attached_post_id?: string;
+  shared_post_id?: string;
+  attachments?: Array<attachments>;
+  embeds: Array<embeds>;
+  mentions: Array<string>;
+  hashtags: Array<string>;
+  content: string;
+  type: postTypes;
+  // poll?: pollInterface;
+  // giveway?: givewayInterface;
   created_at: Date
 }
 
 export interface createPostReponse {
-  error?: error,
+  error?: error;
   data?: createPostResponseInterface
 }
 
 export interface postResponseSchema {
-  post_id: string,
-  content: string,
-  locale: ISO_639_CODE_LIST,
-  type: postTypes,
-  attachments: Array<attachments> | [],
-  attached_post_id?: string,
-  shared_post_id?: string,
-  embeds: Array<embeds> | [],
-  poll: pollInterface
-  giveway?: givewayInterface,
-  mentions: Array<userInfo> | [],
-  hashtags: Array<string> | [],
-  created_at: Date,
-  from: userInfo,
-  likes: number,
-  liked: boolean,
+  post_id: string;
+  content: string;
+  locale: ISO_639_CODE_LIST;
+  type: postTypes;
+  attachments: Array<attachments> | [];
+  attached_post_id?: string;
+  shared_post_id?: string;
+  embeds: Array<embeds> | [];
+  poll: pollInterface;
+  giveway?: givewayInterface;
+  mentions: Array<userInfo> | [];
+  hashtags: Array<string> | [];
+  created_at: Date;
+  from: userInfo;
+  likes: number;
+  liked: boolean;
   shares: number;
-  comments: number,
-  views: number
+  comments: number;
+  views: number;
+  paid?: boolean;
 }
 
 export interface fetchOnePost {
-  error?: error,
+  error?: error;
   data?: postResponseSchema
 }
 
 export interface postResponse {
-  error?: error,
-  data?: Array<postResponseSchema>,
+  error?: error;
+  data?: Array<postResponseSchema>;
   pagination_key?: string
 }
 
 export interface pinedPostResponse {
-  error?: error,
+  error?: error;
   data?: postResponseSchema
 }
 
 export type postInterface = postResponseSchema;
 
 export interface searchParams {
-  from?: string,
-  locale?: ISO_639_CODE_LIST | string,
-  query?: string,
-  before?: string,
-  after?: string,
-  type?: string | premium_type,
+  from?: string;
+  locale?: ISO_639_CODE_LIST | string;
+  query?: string;
+  before?: string;
+  after?: string;
+  type?: string | premium_type;
   pagination_key?: string
 }
