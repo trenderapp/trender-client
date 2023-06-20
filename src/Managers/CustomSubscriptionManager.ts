@@ -6,12 +6,17 @@ class CustomSubscriptionManager extends RequestEmitter {
     super(params);
   }
 
-  /**  
-   * Get current user active subscriptions
-   */
-  public async list() {
+
+  public async subscribers() {
     const request = await this.postRequest(`/subscriptions/custom`);
-    
+
+    const response = request as CustomSubscriptionInterface.getUserActiveSubscriptionInterfaceResponse;
+    return response;
+  }
+
+  public async subscriptions() {
+    const request = await this.postRequest(`/subscriptions/custom`);
+
     const response = request as CustomSubscriptionInterface.getUserActiveSubscriptionInterfaceResponse;
     return response;
   }
