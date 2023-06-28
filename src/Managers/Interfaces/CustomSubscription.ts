@@ -33,3 +33,24 @@ export interface getUserActiveSubscriptionInterfaceResponse {
   error?: error;
   data?: Array<getUserActiveSubscriptionInterface>
 }
+
+export interface getUserActiveCustomSubscriptionInterfaceResponse {
+  error?: error;
+  data?: {
+    active: boolean;
+  }
+}
+
+export interface getUserConnectDashboarLinkResponse {
+  error?: error;
+  data?: {
+    url: string;
+  }
+}
+
+export interface getUserConnectRegisterLinkResponse {
+  error?: error;
+  data?: {
+    url: string;
+  }
+}

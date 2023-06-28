@@ -6,17 +6,36 @@ class CustomSubscriptionManager extends RequestEmitter {
     super(params);
   }
 
+  /**
+   * 
+   * Check if the current account can create custom subscription
+   */
+  public async isActive() {
+    const request = await this.getRequest(`/subscriptions/custom/me/active`);
 
-  public async subscribers() {
-    const request = await this.postRequest(`/subscriptions/custom`);
-
-    const response = request as CustomSubscriptionInterface.getUserActiveSubscriptionInterfaceResponse;
+    const response = request as CustomSubscriptionInterface.getUserActiveCustomSubscriptionInterfaceResponse;
     return response;
   }
 
-  public async subscriptions() {
-    const request = await this.postRequest(`/subscriptions/custom`);
+  public async register() {
+    const request = await this.postRequest(`/subscriptions/custom/me/register`);
 
+    const response = request as CustomSubscriptionInterface.getUserConnectRegisterLinkResponse;
+    return response;
+  }
+
+  public async dashboard() {
+    const request = await this.getRequest(`/subscriptions/custom/me/link`);
+
+    const response = request as CustomSubscriptionInterface.getUserConnectDashboarLinkResponse;
+    return response;
+  }
+
+  /**  
+   * Get current user active subscriptions
+   */
+  public async list() {
+    const request = await this.getRequest(`/subscriptions/custom`);
     const response = request as CustomSubscriptionInterface.getUserActiveSubscriptionInterfaceResponse;
     return response;
   }

@@ -1,6 +1,6 @@
 {
   "name": "trender-client",
-  "version": "3.4.0",
+  "version": "4.0.0",
   "description": "Official Trender client API",
   "main": "./index.js",
   "types": "./index.d.ts",

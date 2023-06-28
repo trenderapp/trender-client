@@ -19,7 +19,7 @@ class SubscriptionManager extends RequestEmitter {
   }
 
   public async fetch() {
-    const request = await this.getRequest(`/sessions`);
+    const request = await this.getRequest(`/subscriptions`);
 
     const response = request as SubscriptionInterface.getSubscriptionsResponse;
 
