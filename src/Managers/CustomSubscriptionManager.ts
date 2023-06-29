@@ -1,5 +1,5 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
-import type { CustomSubscriptionInterface } from './Interfaces';
+import type { CustomSubscriptionInterface, GlobalInterface } from './Interfaces';
 
 class CustomSubscriptionManager extends RequestEmitter {
   constructor(params: requestParams) {
@@ -45,6 +45,13 @@ class CustomSubscriptionManager extends RequestEmitter {
     const request = await this.postRequest(`/subscriptions/custom`, params);
 
     const response = request as CustomSubscriptionInterface.getUserSubscriptionsResponse;
+    return response;
+  }
+
+  public async cancel(target_id: string) {
+    const request = await this.deleteRequest(`/subscriptions/custom/${target_id}`);
+    const response = request as GlobalInterface.successReponseInterface;
+
     return response;
   }
 
