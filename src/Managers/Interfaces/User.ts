@@ -37,6 +37,7 @@ export interface profileInformationsInterface {
     pined_post?: string;
     follow_back: boolean;
     followed: boolean;
+    link?: string
     subscriptions: number;
     subscribers: number;
     custom_subscription: string | false;

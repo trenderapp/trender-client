@@ -15,7 +15,8 @@ export interface createPostParameters {
    */
   shared_post_id?: string;
   content: string;
-  attachments?: Array<attachments>
+  attachments?: Array<attachments>;
+  paid?: boolean;
 }
 
 export interface createPostResponseInterface {
@@ -28,9 +29,10 @@ export interface createPostResponseInterface {
   hashtags: Array<string>;
   content: string;
   type: postTypes;
+  paid?: boolean;
   // poll?: pollInterface;
   // giveway?: givewayInterface;
-  created_at: Date
+  created_at: Date;
 }
 
 export interface createPostReponse {
@@ -51,13 +53,25 @@ export interface postResponseSchema {
   giveway?: givewayInterface;
   mentions: Array<userInfo> | [];
   hashtags: Array<string> | [];
-  created_at: Date;
+  created_at: string;
   from: userInfo;
   likes: number;
   liked: boolean;
   shares: number;
   comments: number;
   views: number;
+  shared_post?: {
+    post_id: string,
+    user_id: string,
+    created_at: string,
+    content: string,
+    mentions: Array<userInfo> | [];
+    hashtags: Array<string> | [];
+    locale: ISO_639_CODE_LIST,
+    paid: boolean
+  } | false;
+  shared_user?: userInfo | false;
+  display_not_allowed?: true;
   paid?: boolean;
 }
 

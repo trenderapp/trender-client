@@ -13,6 +13,7 @@ export interface myInformationInterface {
     flags: number;
     nsfw_filter?: boolean;
     banner?: string;
+    payout_enabled: boolean;
     accent_color?: string;
 }
 
