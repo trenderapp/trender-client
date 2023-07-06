@@ -109,8 +109,21 @@ class PostManager extends RequestEmitter {
     let _url = `/posts/${post_id}/comments`;
     const parameters = [];
 
-    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
-    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
+
+    const response = request as PostInterface.postResponse;
+
+    return response;
+  }
+
+  public async shares(post_id: string, params?: GlobalInterface.paginationParams) {
+
+    let _url = `/posts/${post_id}/shares`;
+    const parameters = [];
+
     if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
     if(parameters.length > 0) _url = _url.concat("?")
 
@@ -126,8 +139,6 @@ class PostManager extends RequestEmitter {
     let _url = `/posts`;
     const parameters = []
 
-    if(params?.skip) parameters.push(`skip=${params.skip.toString()}`);
-    if(params?.limit) parameters.push(`limit=${params.limit.toString()}`);
     if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
     if(parameters.length > 0) _url = _url.concat("?")
 
