@@ -1,3 +1,4 @@
+import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1"
 import type { error, attachments, embeds, premium_type } from "./Global"
 import type { postTypes } from "./Post"
 
@@ -19,6 +20,7 @@ export interface userResponseInterface {
 export interface fetchGuildResponseSchema {
     channel_id: string,
     content: string,
+    content_language: ISO_639_CODE_LIST,
     attachments?: Array<attachments>,
     type: postTypes,
     embeds?: Array<embeds>,

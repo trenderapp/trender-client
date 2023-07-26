@@ -28,6 +28,7 @@ export interface createPostResponseInterface {
   mentions: Array<string>;
   hashtags: Array<string>;
   content: string;
+  content_language: ISO_639_CODE_LIST;
   type: postTypes;
   paid?: boolean;
   // poll?: pollInterface;
@@ -43,6 +44,7 @@ export interface createPostReponse {
 export interface postResponseSchema {
   post_id: string;
   content: string;
+  content_language: ISO_639_CODE_LIST;
   locale: ISO_639_CODE_LIST;
   type: postTypes;
   attachments: Array<attachments> | [];
