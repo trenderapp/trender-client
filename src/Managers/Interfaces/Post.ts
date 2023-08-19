@@ -75,6 +75,8 @@ export interface postResponseSchema {
   shared_user?: userInfo | false;
   display_not_allowed?: true;
   paid?: boolean;
+  bookmarks: number;
+  bookmarked: boolean;
 }
 
 export interface fetchOnePost {
