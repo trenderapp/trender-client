@@ -86,6 +86,32 @@ class PostManager extends RequestEmitter {
     return response;
   }
 
+  public async save(target_id: string) {
+    const request = await this.postRequest(`/posts/${target_id}/saves`);
+    const response = request as GlobalInterface.successResponse;
+
+    return response;
+  }
+
+  public async unSave(target_id: string) {
+    const request = await this.deleteRequest(`/posts/${target_id}/saves`);
+    const response = request as GlobalInterface.emptyResponse;
+
+    return response;
+  }
+
+  public async getSavedPost(target_id: string, params?: GlobalInterface.paginationParams) {
+    let _url = `/posts/${target_id}/saves`;
+    const parameters = [];
+
+    if(params?.pagination_key) parameters.push(`pagination_key=${params.pagination_key}`);
+    if(parameters.length > 0) _url = _url.concat("?")
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
+    const response = request as PostInterface.postResponse;
+    return response;
+  }
+
   public async report(target_id: string, reason: number, description?: string) {
     const request = await this.postRequest(`/posts/${target_id}/reports`, {
       reason: reason,
