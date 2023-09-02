@@ -42,6 +42,7 @@ export interface profileInformationsInterface {
     subscribers: number;
     custom_subscription: string | false;
     pay_custom_subscription: boolean;
+    total_posts: number;
 }
 
 export interface profileInformations {
