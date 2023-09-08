@@ -16,6 +16,7 @@ export interface createPostParameters {
   shared_post_id?: string;
   content: string;
   attachments?: Array<attachments>;
+  categories?: number[];
   paid?: boolean;
 }
 
@@ -54,6 +55,7 @@ export interface postResponseSchema {
   poll: pollInterface;
   giveway?: givewayInterface;
   mentions: Array<userInfo> | [];
+  categories: number[] | [];
   hashtags: Array<string> | [];
   created_at: string;
   from: userInfo;

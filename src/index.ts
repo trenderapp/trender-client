@@ -1,4 +1,5 @@
 import RequestEmitter, { requestParams } from './utils/RequestEmitter';
+import TrendsCategories from "./utils/TrendsCategories";
 import type { MeInterface } from './Managers/Interfaces';
 import GuildManager from './Managers/GuildManager';
 import PostManager from './Managers/PostManager';
@@ -17,6 +18,7 @@ export * from "./Managers/Interfaces";
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
+export const trendsCategories = TrendsCategories;
 
 class Client extends RequestEmitter {
     
