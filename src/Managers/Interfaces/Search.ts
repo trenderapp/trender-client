@@ -1,15 +1,4 @@
-import type { error } from "./Global"
-
-export interface userInfo {
-    user_id: string,
-    username: string,
-    nickname: string,
-    description: string,
-    avatar: string,
-    flags: number,
-    certified: boolean,
-    created_at: string
-}
+import type { error, userInfo } from "./Global"
 
 export interface searchUsers {
     error?: error,
