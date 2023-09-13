@@ -21,3 +21,9 @@ export interface exploreBestUserResponse {
     data?: Array<userInfo>;
     pagination_key?: string;
 }
+
+
+export interface exploreRandomUserResponse {
+    error?: error,
+    data?: Array<userInfo>;
+}

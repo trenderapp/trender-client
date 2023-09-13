@@ -1,6 +1,6 @@
 import RequestEmitter, { requestParams } from '../utils/RequestEmitter';
 import type { ExploreInterface, PostInterface } from './Interfaces';
-import type { exploreBestUserResponse } from './Interfaces/Explore';
+import type { exploreBestUserResponse, exploreRandomUserResponse } from './Interfaces/Explore';
 
 class ExploreManager extends RequestEmitter {
   constructor(params: requestParams) {
@@ -53,6 +53,19 @@ class ExploreManager extends RequestEmitter {
     const request = await this.getRequest(_url.concat(parameters.join("&")));
 
     const response = request as exploreBestUserResponse;
+    return response;
+  }
+  
+  public async randomUsers(params?: ExploreInterface.exploreUsersParams) {
+    let _url = `/explore/users/random`;
+    const parameters = [];
+
+    if(params?.locale) parameters.push(`locale=${params.locale}`);
+    if(parameters.length > 0) _url = _url.concat("?");
+
+    const request = await this.getRequest(_url.concat(parameters.join("&")));
+
+    const response = request as exploreRandomUserResponse;
     return response;
   }
 }
