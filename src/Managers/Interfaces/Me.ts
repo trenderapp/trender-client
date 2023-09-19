@@ -1,20 +1,23 @@
 import type { attachments, error, premium_type } from "./Global";
 import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1";
+import type { LanguageListI } from "../../utils/LanguageList";
 
 export interface myInformationInterface {
     user_id: string,
     nickname: string,
+    username: string;
     premium_type: premium_type,
+    flags: number;
     avatar: string,
+    banner?: string;
     token: string,
     locale: ISO_639_CODE_LIST
+    language_spoken?: Array<LanguageListI>,
     session_id: string;
-    username: string;
-    flags: number;
     nsfw_filter?: boolean;
-    banner?: string;
-    payout_enabled: boolean;
     accent_color?: string;
+    payout_enabled: boolean;
+    birthday?: Date;
 }
 
 export interface myInformations {
@@ -32,7 +35,7 @@ export interface editInformationsParams {
     avatar?: attachments,
     banner?: attachments,
     locale?: ISO_639_CODE_LIST,
-    language_spoken?: Array<ISO_639_CODE_LIST>,
+    language_spoken?: Array<LanguageListI>,
     nsfw_filter?: boolean
 }
 

@@ -32,6 +32,7 @@ export interface createPostResponseInterface {
   content_language: ISO_639_CODE_LIST;
   type: postTypes;
   paid?: boolean;
+  device?: string;
   // poll?: pollInterface;
   // giveway?: givewayInterface;
   created_at: Date;

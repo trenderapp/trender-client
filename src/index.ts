@@ -13,12 +13,14 @@ import PushNoficationManager from './Managers/PushNoficationManager';
 import ExploreManager from './Managers/ExploreManager';
 import NotificationManager from './Managers/NotificationManager';
 import SubscriptionManager from './Managers/SubscriptionManager';
+import LanguageList from './utils/LanguageList';
 
 export * from "./Managers/Interfaces";
 
 export const userFlags = UserFlags;
 export const webSocketRoutes = WebSocketRoutes;
 export const trendsCategories = TrendsCategories;
+export const languageList = LanguageList;
 
 class Client extends RequestEmitter {
     
