@@ -12,7 +12,7 @@ export interface myInformationInterface {
     banner?: string;
     token: string,
     locale: ISO_639_CODE_LIST
-    language_spoken?: Array<LanguageListI>,
+    language_spoken?: Array<string>,
     session_id: string;
     nsfw_filter?: boolean;
     accent_color?: string;
@@ -49,7 +49,7 @@ export interface editInformationsResponseInterface {
     accent_color?: string,
     banner?: string,
     locale?: ISO_639_CODE_LIST,
-    language_spoken?: Array<ISO_639_CODE_LIST>,
+    language_spoken?: Array<string>,
     nsfw_filter?: boolean
 }
 
