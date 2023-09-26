@@ -1,6 +1,5 @@
 import type { attachments, error, premium_type } from "./Global";
 import type { ISO_639_CODE_LIST } from "../../utils/ISO-369-1";
-import type { LanguageListI } from "../../utils/LanguageList";
 
 export interface myInformationInterface {
     user_id: string,
@@ -35,7 +34,7 @@ export interface editInformationsParams {
     avatar?: attachments,
     banner?: attachments,
     locale?: ISO_639_CODE_LIST,
-    language_spoken?: Array<LanguageListI>,
+    language_spoken?: Array<string>,
     nsfw_filter?: boolean
 }
 
