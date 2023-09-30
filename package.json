@@ -1,6 +1,6 @@
 {
   "name": "trender-client",
-  "version": "5.3.1",
+  "version": "5.4.1",
   "description": "Official Trender client API",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -29,6 +29,7 @@
     "dev": "node ./test/index.mjs",
     "dev:ts": "ts-node ./test/index.ts",
     "build": "rm -rf ./dist && tsc && cp README.md ./dist/README.md && cp package.json ./dist/package.json && cp LICENSE ./dist/LICENSE",
+    "build:publish": "npm run build && cd ./dist && npm publish",
     "update": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {

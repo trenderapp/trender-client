@@ -24,7 +24,7 @@ export interface createCustomerSubscriptionParamsInterface {
 export interface getUserActiveSubscriptionInterface {
   active: boolean;
   last_renew: string;
-  new_renew: string;
+  next_renew: string;
   user_subscription_id: string;
   subscription_info: getUserSubscriptionResponseInterface;
   from: userInfo;

@@ -27,6 +27,13 @@ class NotificationManager extends RequestEmitter {
 
     return response;
   }
+
+  public async readOne(notification_id: string) {
+    const request = await this.postRequest(`/notifications/${notification_id}`);
+    const response = request as GlobalInterface.successResponse;
+
+    return response;
+  }
 }
 
 export default NotificationManager;
