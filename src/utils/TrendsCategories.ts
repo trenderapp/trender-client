@@ -54,7 +54,11 @@ const categories: trendsCategoriesI[] = [
     { number: 47, name: 'Horseback Riding' },
     { number: 48, name: 'Investment' },
     { number: 49, name: 'Geopolitics' },
-    { number: 50, name: 'Nudity' }
+    { number: 50, name: 'Nudity' },
+    { number: 51, name: 'Lifestyle' },
+    { number: 52, name: 'Adult' },
+    { number: 53, name: 'Thread' },
+    { number: 54, name: 'Sensitive content' }
 ]
 
 export default categories;
