@@ -52,5 +52,5 @@ export interface unreadFetchResponseInterface {
 
 export interface unreadFetchResponse {
     error?: error,
-    data?: Array<unreadFetchResponseInterface | []>
+    data?: Array<unreadFetchResponseInterface>
 }

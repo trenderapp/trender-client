@@ -15,27 +15,22 @@ export interface userInfo {
 
 export interface fetchGuildResponseSchema {
     guild_id: string,
-    created_at: Date,
+    created_at: string,
     owner?: string,
     type: 0 | 1,
-    users: Array<userInfo | []>,
+    users: Array<userInfo>,
     last_message?: {
         content: string,
-        created_at: Date
+        created_at: string
     }
-}
-
-export interface guildCreateReponseInterface {
-    guild_id: string,
-    users: Array<string>
 }
 
 export interface guildCreateResponse {
     error?: error,
-    data?: guildCreateReponseInterface
+    data?: fetchGuildResponseSchema
 }
 
 export interface guildFetchResponse {
     error?: error,
-    data?: Array<fetchGuildResponseSchema | []>
+    data?: Array<fetchGuildResponseSchema>
 }
