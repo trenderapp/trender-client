@@ -1,4 +1,5 @@
 import type { error, premium_type } from "./Global";
+import type { fetchMessageResponseInterface } from "./Message";
 
 export interface userInfo {
     username: string,
@@ -16,13 +17,9 @@ export interface userInfo {
 export interface fetchGuildResponseSchema {
     guild_id: string,
     created_at: string,
-    owner?: string,
     type: 0 | 1,
     users: Array<userInfo>,
-    last_message?: {
-        content: string,
-        created_at: string
-    }
+    last_message?: fetchMessageResponseInterface
 }
 
 export interface guildCreateResponse {
