@@ -10,7 +10,7 @@ export interface userInfo {
     certified: boolean,
     flags: number,
     is_private: boolean,
-    created_at: Date,
+    created_at: string,
     user_id: string,
 }
 

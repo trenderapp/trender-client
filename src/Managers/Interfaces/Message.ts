@@ -28,7 +28,7 @@ export interface fetchMessageResponseInterface {
     mentions?: Array<userResponseInterface>;
     hashtags?: Array<string>;
     message_id: string;
-    created_at: Date;
+    created_at: string;
     status?: messageStatus;
     from: userResponseInterface;
 }
