@@ -17,6 +17,7 @@ export interface createPostParameters {
   content: string;
   attachments?: Array<attachments>;
   categories?: number[];
+  giveway?: givewayInterface;
   paid?: boolean;
 }
 
@@ -73,9 +74,9 @@ export interface postResponseSchema {
     mentions: Array<userInfo> | [];
     hashtags: Array<string> | [];
     locale: ISO_639_CODE_LIST,
-    paid: boolean
+    paid: boolean;
+    from: userInfo
   } | false;
-  shared_user?: userInfo | false;
   display_not_allowed?: true;
   paid?: boolean;
   bookmarks: number;

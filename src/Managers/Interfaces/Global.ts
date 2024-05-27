@@ -107,4 +107,5 @@ export interface givewayInterface {
     comment: boolean;
     share: boolean;
     paid: boolean;
+    tag_account: boolean;
 }
