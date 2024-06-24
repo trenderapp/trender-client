@@ -24,7 +24,7 @@
     "declaration": true,
     "importHelpers": true,
     "ignoreDeprecations": "5.0",
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": false,
     "inlineSources": false,
     "newLine": "lf",
     "noEmitHelpers": true,
