@@ -11,8 +11,8 @@ class SubscriptionManager extends RequestEmitter {
     this.custom = new CustomSubscriptionManager(params);
   }
 
-  public async dashboard(user_id: string) {
-    const request = await this.getRequest(`/subscriptions/${user_id}/dashboard`);
+  public async dashboard() {
+    const request = await this.getRequest(`/subscriptions/dashboard`);
 
     const response = request as SubscriptionInterface.createDashboardResponse;
     return response;
