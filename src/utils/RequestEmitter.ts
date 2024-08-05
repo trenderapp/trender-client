@@ -44,7 +44,7 @@ class RequestEmitter {
     return request.data;
   }
 
-  protected async patchRequest(url: string, data: object, params?: AxiosRequestConfig) {
+  protected async patchRequest(url: string, data?: object, params?: AxiosRequestConfig) {
     const request = await this.instance({
       method: 'PATCH',
       url: url,

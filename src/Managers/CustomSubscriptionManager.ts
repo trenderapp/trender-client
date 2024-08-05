@@ -55,6 +55,13 @@ class CustomSubscriptionManager extends RequestEmitter {
     return response;
   }
 
+  public async renew(target_id: string) {
+    const request = await this.patchRequest(`/subscriptions/custom/${target_id}`);
+    const response = request as CustomSubscriptionInterface.getUserActiveSubscriptionInterfaceResponse;
+
+    return response;
+  }
+
   public async fetch(user_id: string) {
     const request = await this.getRequest(`/subscriptions/custom/${user_id}`);
 
