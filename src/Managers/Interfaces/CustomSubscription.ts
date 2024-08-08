@@ -26,6 +26,7 @@ export interface getUserActiveSubscriptionInterface {
   last_renew: string;
   next_renew: string;
   user_subscription_id: string;
+  canceled: boolean;
   subscription_info: getUserSubscriptionResponseInterface;
   from: userInfo;
 }
